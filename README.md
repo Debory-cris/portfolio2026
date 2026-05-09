@@ -5,7 +5,8 @@ de Diretora de Arte para Desenvolvedora Frontend.
 
 ## 🔗 Deploy
 
-[[[deborameireles.com.br]([https://seudominio.vercel.app](https://portfolio2026-sigma-ten-95.vercel.app/)) 
+(([https://seudominio.vercel.app](https://portfolio2026-sigma-ten-95.vercel.app/)) 
+
 ## 🛠️ Stack
 
 - **Framework:** Next.js 14
