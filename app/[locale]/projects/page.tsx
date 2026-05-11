@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { X, ExternalLink, GitBranch, ArrowUpRight } from "lucide-react";
+import { useTranslations, useLocale } from "next-intl";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -24,70 +25,8 @@ type ArtProject = {
     concept: string;
     direction: string;
     image: string;
-    behanceUrl?: string; // Campo opcional para o link externo
+    behanceUrl?: string;
 };
-
-// ─── Data ─────────────────────────────────────────────────────────────────────
-
-const frontendProjects: FrontendProject[] = [
-    {
-        id: "toti",
-        title: "Toti",
-        subtitle: "Plano de Saúde Pet",
-        description:
-            "Uma landing page acolhedora e focada em conversão para uma marca de plano de saúde pet. Construída em torno da confiança e da conexão emocional — porque tutores não querem apenas cobertura, querem tranquilidade. Projetada e desenvolvida com uma identidade visual suave e um fluxo de navegação claro e intuitivo.",
-        image: "/projects/toti.png",
-        tags: ["Next.js", "Tailwind CSS", "Lottie", "Vercel"],
-        liveUrl: "https://toti-pet-health.vercel.app/",
-        githubUrl: "https://github.com/Debory-cris/toti-pet-health.git",
-    },
-    {
-        id: "verdant",
-        title: "Verdant",
-        subtitle: "Loja de Plantas de Interior",
-        description:
-            "Uma landing page de e-commerce minimalista para uma marca de plantas de interior. Ancorada no espaço negativo e na tipografia editorial, a Verdant comunica calma, qualidade e um estilo de vida intencional. Cada detalhe — da paleta de cores às micro-interações — foi pensado para refletir a essência orgânica da marca.",
-        image: "/projects/verdant.png",
-        tags: ["Next.js", "Tailwind CSS", "Vercel"],
-        liveUrl: "https://verdante-landing.vercel.app/",
-        githubUrl: "https://github.com/Debory-cris/verdante-landing.git",
-    },
-    {
-        id: "starbucks",
-        title: "Starbucks Clone",
-        subtitle: "Prática de Desenvolvimento Frontend",
-        description:
-            "Uma recreação fiel ao pixel da página inicial da Starbucks, construída como um estudo de desenvolvimento frontend. Focado em precisão de layout, comportamento responsivo e estrutura de componentes — traduzindo um design polido e do mundo real em código limpo e maintainable.",
-        image: "/projects/starbucks.png",
-        tags: ["React", "CSS", "Responsive"],
-        githubUrl: "https://github.com/Debory-cris/starbucks-react.git",
-    },
-];
-
-const artProjects: ArtProject[] = [
-    {
-        id: "natura",
-        title: "Natura — TodaNoite",
-        category: "Art Direction / Branding",
-        concept:
-            "Lançamento e Experiência de Marca para a linha de cuidados noturnos da Natura. O conceito criativo girou em torno da ideia de 'ritual de beleza noturno' — uma pausa consciente para cuidar de si mesmo. A identidade visual combinou elementos orgânicos e texturas suaves com uma paleta de cores que evocava calma e luxo acessível.",
-        direction:
-            "Para o lançamento da linha Tododia Todanoite, o desafio foi materializar o conceito do 'ritual do sono' em um ambiente físico. Como Diretora de Arte, liderei a criação de uma jornada visual baseada em ciclos, utilizando uma paleta de azuis profundos e iluminação circular para guiar a percepção do convidado.",
-        image: "/projects/natura.png",
-        behanceUrl: "https://www.behance.net/gallery/181548721/NATURA-TODODIA-TODANOITE-Lancamento-imprensa",
-    },
-    {
-        id: "avon",
-        title: "Avon — Giro Pela Vida",
-        category: "Art Direction / Brand Strategy",
-        concept:
-            "Campanha anual da Avon voltada ao combate e conscientização sobre o câncer de mama. O conceito visual busca humanizar a causa através de uma estética acolhedora e informativa, utilizando o símbolo do laço rosa integrado a composições fotográficas que celebram o cuidado e a vida.",
-        direction:
-            "Como Diretora de Arte, liderei a concepção visual da 11ª edição do projeto. O desafio foi equilibrar a seriedade do tema com uma linguagem visual vibrante e empoderada. Desenvolvi o Key Visual (KV) focado na conexão real, utilizando tipografia sólida e elementos gráficos que guiam o público para o engajamento direto via QR Code.",
-        image: "/projects/avon.png",
-        behanceUrl: "https://www.behance.net/gallery/249030319/Avon-Giro-pela-Vida-11-Edicao"
-    },
-];
 
 // ─── Modal ────────────────────────────────────────────────────────────────────
 
@@ -98,6 +37,8 @@ function ProjectModal({
     project: FrontendProject;
     onClose: () => void;
 }) {
+    const t = useTranslations("projects");
+
     return (
         <div
             className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/60 backdrop-blur-sm"
@@ -159,7 +100,7 @@ function ProjectModal({
                                 className="flex items-center gap-2 px-5 py-2.5 bg-[var(--primary)] text-white rounded-full text-sm font-bold hover:bg-[var(--secondary)] transition-colors"
                             >
                                 <ExternalLink size={15} />
-                                Live Demo
+                                {t("liveDemo")}
                             </a>
                         )}
                         <a
@@ -169,7 +110,7 @@ function ProjectModal({
                             className="flex items-center gap-2 px-5 py-2.5 border border-slate-200 text-slate-700 rounded-full text-sm font-bold hover:border-slate-400 transition-colors"
                         >
                             <GitBranch size={15} />
-                            Source Code
+                            {t("sourceCode")}
                         </a>
                     </div>
                 </div>
@@ -187,6 +128,8 @@ function FrontendCard({
     project: FrontendProject;
     onClick: () => void;
 }) {
+    const t = useTranslations("projects");
+
     return (
         <button
             onClick={onClick}
@@ -201,7 +144,7 @@ function FrontendCard({
                 />
                 {!project.liveUrl && (
                     <span className="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider bg-slate-800/80 text-white px-2.5 py-1 rounded-full backdrop-blur-sm">
-                        No deploy yet
+                        {t("noDeploy")}
                     </span>
                 )}
             </div>
@@ -227,13 +170,13 @@ function FrontendCard({
 // ─── Art Direction Row ────────────────────────────────────────────────────────
 
 function ArtRow({ project, index }: { project: ArtProject; index: number }) {
+    const t = useTranslations("projects");
     const isEven = index % 2 === 0;
 
     return (
         <div
             className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} gap-0 items-stretch border-b border-slate-100 last:border-b-0`}
         >
-            {/* Image */}
             <div className="relative w-full md:w-1/2 aspect-[4/3] overflow-hidden bg-slate-100">
                 <Image
                     src={project.image}
@@ -243,7 +186,6 @@ function ArtRow({ project, index }: { project: ArtProject; index: number }) {
                 />
             </div>
 
-            {/* Text */}
             <div className="w-full md:w-1/2 flex flex-col justify-center px-8 py-10 md:px-12 md:py-14 bg-white">
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--secondary)] mb-3">
                     {project.category}
@@ -255,7 +197,7 @@ function ArtRow({ project, index }: { project: ArtProject; index: number }) {
                 <div className="space-y-4">
                     <div>
                         <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">
-                            Concept
+                            {t("concept")}
                         </p>
                         <p className="text-slate-600 text-sm leading-relaxed">
                             {project.concept}
@@ -263,7 +205,7 @@ function ArtRow({ project, index }: { project: ArtProject; index: number }) {
                     </div>
                     <div>
                         <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">
-                            Art Direction
+                            {t("artDirection")}
                         </p>
                         <p className="text-slate-600 text-sm leading-relaxed">
                             {project.direction}
@@ -271,7 +213,6 @@ function ArtRow({ project, index }: { project: ArtProject; index: number }) {
                     </div>
                 </div>
 
-                {/* Link para Behance */}
                 {project.behanceUrl && (
                     <a
                         href={project.behanceUrl}
@@ -280,7 +221,7 @@ function ArtRow({ project, index }: { project: ArtProject; index: number }) {
                         className="inline-flex items-center gap-2 mt-8 text-slate-900 font-bold hover:text-[var(--secondary)] transition-colors group text-xs uppercase tracking-widest"
                     >
                         <span className="border-b border-slate-900 group-hover:border-[var(--secondary)] pb-0.5">
-                            View Full Project
+                            {t("viewFullProject")}
                         </span>
                         <ArrowUpRight
                             size={14}
@@ -296,8 +237,62 @@ function ArtRow({ project, index }: { project: ArtProject; index: number }) {
 // ─── Main Section ─────────────────────────────────────────────────────────────
 
 export default function Projects() {
-    const [selectedProject, setSelectedProject] =
-        useState<FrontendProject | null>(null);
+    const [selectedProject, setSelectedProject] = useState<FrontendProject | null>(null);
+    const t = useTranslations("projects");
+    const locale = useLocale();
+
+    const frontendProjects: FrontendProject[] = [
+        {
+            id: "toti",
+            title: "Toti",
+            subtitle: t("toti.subtitle"),
+            description: t("toti.description"),
+            image: "/projects/toti.png",
+            tags: ["Next.js", "Tailwind CSS", "Lottie", "Vercel"],
+            liveUrl: "https://toti-pet-health.vercel.app/",
+            githubUrl: "https://github.com/Debory-cris/toti-pet-health.git",
+        },
+        {
+            id: "verdant",
+            title: "Verdant",
+            subtitle: t("verdant.subtitle"),
+            description: t("verdant.description"),
+            image: "/projects/verdant.png",
+            tags: ["Next.js", "Tailwind CSS", "Vercel"],
+            liveUrl: "https://verdante-landing.vercel.app/",
+            githubUrl: "https://github.com/Debory-cris/verdante-landing.git",
+        },
+        {
+            id: "starbucks",
+            title: "Starbucks Clone",
+            subtitle: t("starbucks.subtitle"),
+            description: t("starbucks.description"),
+            image: "/projects/starbucks.png",
+            tags: ["React", "CSS", "Responsive"],
+            githubUrl: "https://github.com/Debory-cris/starbucks-react.git",
+        },
+    ];
+
+    const artProjects: ArtProject[] = [
+        {
+            id: "natura",
+            title: "Natura — TodaNoite",
+            category: t("natura.category"),
+            concept: t("natura.concept"),
+            direction: t("natura.direction"),
+            image: "/projects/natura.png",
+            behanceUrl: "https://www.behance.net/gallery/181548721/NATURA-TODODIA-TODANOITE-Lancamento-imprensa",
+        },
+        {
+            id: "avon",
+            title: "Avon — Giro Pela Vida",
+            category: t("avon.category"),
+            concept: t("avon.concept"),
+            direction: t("avon.direction"),
+            image: "/projects/avon.png",
+            behanceUrl: "https://www.behance.net/gallery/249030319/Avon-Giro-pela-Vida-11-Edicao",
+        },
+    ];
 
     return (
         <section id="projects" className="py-24 scroll-mt-20">
@@ -305,10 +300,10 @@ export default function Projects() {
             <div className="max-w-6xl mx-auto px-6 mb-28">
                 <div className="mb-12">
                     <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--secondary)] mb-2">
-                        Selected Work
+                        {t("selectedWork")}
                     </p>
                     <h2 className="text-4xl md:text-5xl font-bold text-[var(--primary)] font-zilla tracking-tight">
-                        Frontend Development
+                        {t("frontendTitle")}
                     </h2>
                 </div>
 
@@ -327,10 +322,10 @@ export default function Projects() {
             <div className="max-w-6xl mx-auto px-6 mb-12">
                 <div className="mb-12">
                     <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--secondary)] mb-2">
-                        Creative Background
+                        {t("creativeBackground")}
                     </p>
                     <h2 className="text-4xl md:text-5xl font-bold text-[var(--primary)] font-zilla tracking-tight">
-                        Art Direction
+                        {t("artDirectionTitle")}
                     </h2>
                 </div>
             </div>
@@ -349,10 +344,10 @@ export default function Projects() {
                 />
             )}
 
-            {/* ── Behance CTA ── */}
+            {/* Behance CTA */}
             <div className="max-w-6xl mx-auto px-6 mt-16 flex flex-col items-center text-center gap-4">
                 <p className="text-xs uppercase tracking-[0.3em] text-slate-400 font-bold">
-                    Quer ver mais?
+                    {t("wantMore")}
                 </p>
                 <a
                     href="https://www.behance.net/deborameirele/projects"
@@ -363,13 +358,13 @@ export default function Projects() {
                     <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 flex-shrink-0">
                         <path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029h2.352zm-7.726-2.22c.122-1.994-.547-3.278-2.178-3.278-1.678 0-2.349 1.313-2.35 3.278h4.528zm-8.983-5.38c1.16.147 2.338.57 2.338 2.21 0 1.195-.745 2.066-1.938 2.336v.03c1.403.17 2.488.934 2.488 2.538 0 2.104-1.695 2.886-3.877 2.886H2V9.4h5.017zM4.124 13.5h2.42c1.017 0 1.76-.392 1.76-1.39 0-.929-.686-1.33-1.79-1.33H4.124v2.72zm0 4.022h2.618c1.124 0 1.95-.434 1.95-1.545 0-1.05-.797-1.527-1.95-1.527H4.124v3.072z" />
                     </svg>
-                    Explorar portfólio no Behance
+                    {t("behanceCta")}
                     <ArrowUpRight
                         size={15}
                         className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
                     />
                 </a>
             </div>
-        </section >
+        </section>
     );
 }

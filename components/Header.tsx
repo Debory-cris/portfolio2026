@@ -3,19 +3,29 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
 import Logo from "../assets/logo-principal.svg";
 import Container from "./Container";
-
-const NAV_LINKS = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About Me" },
-    { href: "/projects", label: "Projects" },
-];
 
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const pathname = usePathname();
+    const router = useRouter();
+    const locale = useLocale();
+    const t = useTranslations("nav");
+
+    const NAV_LINKS = [
+        { href: `/${locale}`, label: t("home") },
+        { href: `/${locale}/about`, label: t("about") },
+        { href: `/${locale}/projects`, label: t("projects") },
+    ];
+
+    const toggleLocale = () => {
+        const newLocale = locale === "pt" ? "en" : "pt";
+        const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
+        router.push(newPath);
+    };
 
     useEffect(() => {
         if (typeof document !== "undefined") {
@@ -29,7 +39,7 @@ export default function Header() {
                 <div className="flex items-center justify-between h-20">
 
                     {/* LOGO */}
-                    <Link href="/" className="z-[70] transition-transform hover:scale-105 flex-shrink-0">
+                    <Link href={`/${locale}`} className="z-[70] transition-transform hover:scale-105 flex-shrink-0">
                         <Image
                             src={Logo}
                             alt="Logo Débora"
@@ -58,11 +68,19 @@ export default function Header() {
                             );
                         })}
 
+                        {/* Language toggle */}
+                        <button
+                            onClick={toggleLocale}
+                            className="text-sm font-bold text-primary hover:text-secondary transition-colors border border-slate-200 rounded-full px-3 py-1"
+                        >
+                            {locale === "pt" ? "EN" : "PT"}
+                        </button>
+
                         <Link
-                            href="/contact"
+                            href={`/${locale}/contact`}
                             className="ml-2 px-6 py-2.5 bg-primary text-white rounded-full font-sans text-sm font-bold hover:bg-secondary hover:shadow-lg hover:shadow-secondary/20 transition-all active:scale-95"
                         >
-                            Contact
+                            {t("contact")}
                         </Link>
                     </nav>
 
@@ -109,12 +127,20 @@ export default function Header() {
                     })}
 
                     <Link
-                        href="/contact"
+                        href={`/${locale}/contact`}
                         onClick={() => setMenuOpen(false)}
                         className="mt-6 px-6 py-4 bg-primary text-white rounded-xl font-sans text-xl font-bold text-center active:scale-95 transition-transform"
                     >
-                        Get in Touch
+                        {t("getInTouch")}
                     </Link>
+
+                    {/* Language toggle mobile */}
+                    <button
+                        onClick={() => { toggleLocale(); setMenuOpen(false); }}
+                        className="text-base font-bold text-primary hover:text-secondary transition-colors border border-slate-200 rounded-full px-4 py-2 w-fit"
+                    >
+                        {locale === "pt" ? "🇺🇸 English" : "🇧🇷 Português"}
+                    </button>
                 </nav>
 
                 <p className="absolute bottom-12 left-10 text-xs text-slate-400 tracking-widest uppercase font-sans">

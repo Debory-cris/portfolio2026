@@ -3,6 +3,8 @@ import { Zilla_Slab, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 
 const zillaSlab = Zilla_Slab({
   variable: "--font-zilla-slab",
@@ -17,36 +19,30 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Débora Cristina Meireles — Frontend Developer & Art Director",
-  description:
-    "Portfólio de Débora Meireles — Frontend Developer e Art Director com mais de 4 anos de experiência em design. Especialista em React, Next.js e Tailwind CSS.",
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-icon.png",
-  },
-  openGraph: {
-    title: "Débora Cristina Meireles — Frontend Developer & Art Director",
-    description: "Interfaces minimalistas e funcionais, do Figma ao deploy.",
-    url: "https://seudominio.com",
-    siteName: "Débora Meireles",
-    locale: "pt_BR",
-    type: "website",
-  },
+  description: "Portfólio de Débora Meireles — Frontend Developer e Art Director.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{
+  params,
+}: {
   children: React.ReactNode;
-}>) {
+  params: { locale: string };
+}) {
+  const messages = await getMessages();
+
   return (
     <html
-      lang="pt-BR"
+      lang={params.locale}
       className={`${zillaSlab.variable} ${inter.variable} h-full antialiased`}
+      style={{ colorScheme: 'light' }}
     >
       <body className="min-h-full flex flex-col">
-        <Header />
-        {children}
-        <Footer />
+        <NextIntlClientProvider messages={messages}>
+          <Header />
+          {children}
+          <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -2,16 +2,19 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const NAV_LINKS = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About Me" },
-    { href: "/projects", label: "Projects" },
-    { href: "/contact", label: "Contact" },
-];
+import { useLocale, useTranslations } from "next-intl";
 
 export default function Footer() {
     const pathname = usePathname();
+    const locale = useLocale();
+    const t = useTranslations("nav");
+
+    const NAV_LINKS = [
+        { href: `/${locale}`, label: t("home") },
+        { href: `/${locale}/about`, label: t("about") },
+        { href: `/${locale}/projects`, label: t("projects") },
+        { href: `/${locale}/contact`, label: t("contact") },
+    ];
 
     return (
         <footer className="w-full border-t border-slate-100 bg-[var(--primary)]">

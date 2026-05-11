@@ -1,0 +1,104 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "About Me",
+        "projects": "Projects",
+        "contact": "Contact",
+        "getInTouch": "Get in Touch"
+    },
+    "hero": {
+        "title": "Hi, I'm ",
+        "name": "Débora!",
+        "searchPlaceholder1": "Search for a Frontend Developer...",
+        "searchPlaceholder2": "Search for minimalist web design...",
+        "searchPlaceholder3": "Search for React & Next.js projects...",
+        "pressEnter": "Press enter to discover",
+        "downloadCV": "Download CV"
+    },
+    "projects": {
+        "selectedWork": "Selected Work",
+        "frontendTitle": "Frontend Development",
+        "creativeBackground": "Creative Background",
+        "artDirectionTitle": "Art Direction",
+        "liveDemo": "Live Demo",
+        "sourceCode": "Source Code",
+        "noDeploy": "No deploy yet",
+        "concept": "Concept",
+        "artDirection": "Art Direction",
+        "viewFullProject": "View Full Project",
+        "wantMore": "Want to see more?",
+        "behanceCta": "Explore portfolio on Behance",
+        "toti": {
+            "subtitle": "Pet Health Insurance",
+            "description": "A warm, conversion-focused landing page for a pet health insurance brand. Built around trust and emotional connection — because pet owners don't just want coverage, they want peace of mind. Designed and developed with a soft visual identity and a clear, intuitive navigation flow."
+        },
+        "verdant": {
+            "subtitle": "Indoor Plant Store",
+            "description": "A minimalist e-commerce landing page for an indoor plant brand. Anchored in negative space and editorial typography, Verdant communicates calm, quality, and intentional living. Every detail — from the color palette to the micro-interactions — was crafted to reflect the organic essence of the brand."
+        },
+        "starbucks": {
+            "subtitle": "Frontend Development Practice",
+            "description": "A pixel-faithful recreation of the Starbucks homepage, built as a frontend development study. Focused on layout precision, responsive behavior, and component structure — translating a polished, real-world design into clean, maintainable code."
+        },
+        "natura": {
+            "category": "Art Direction / Branding",
+            "concept": "Brand Launch and Experience for Natura's nighttime skincare line. The creative concept revolved around the idea of a 'nighttime beauty ritual' — a conscious pause for self-care. The visual identity combined organic elements and soft textures with a color palette evoking calm and accessible luxury.",
+            "direction": "For the Tododia Todanoite line launch, the challenge was to materialize the 'sleep ritual' concept in a physical environment. As Art Director, I led the creation of a cycle-based visual journey, using a palette of deep blues and circular lighting to guide the guest's perception."
+        },
+        "avon": {
+            "category": "Art Direction / Brand Strategy",
+            "concept": "Avon's annual campaign focused on breast cancer awareness and prevention. The visual concept seeks to humanize the cause through a welcoming and informative aesthetic, using the pink ribbon symbol integrated into photographic compositions that celebrate care and life.",
+            "direction": "As Art Director, I led the visual concept for the 11th edition of the project. The challenge was to balance the seriousness of the topic with a vibrant, empowering visual language. I developed the Key Visual focused on real connection, using solid typography and graphic elements that guide the audience toward direct engagement via QR Code."
+        }
+    },
+    "contact": {
+        "metaTitle": "Contact — Débora Meireles",
+        "metaDescription": "Get in touch with Débora Meireles — Frontend Developer & Art Director.",
+        "eyebrow": "Get in Touch",
+        "title": "Let's talk.",
+        "subtitle": "I'm open to projects, collaborations, and opportunities. Choose your preferred channel.",
+        "whatsapp": "Let's chat",
+        "linkedin": "Professional profile",
+        "email": "Send me a message",
+        "github": "See my code"
+    },
+    "about": {
+        "tagline": "4 years building brands. Now, building the code behind them.",
+        "english": "English",
+        "englishLevel": "Intermediate",
+        "downloadCV": "Download CV",
+        "education": "Education",
+        "inProgress": "IN PROGRESS",
+        "cs": {
+            "title": "Computer Science",
+            "school": "Descomplica College",
+            "period": "Jan 2025 – Present"
+        },
+        "uxui": {
+            "title": "Postgraduate — Digital Product Design UX/UI",
+            "school": "UNOPAR — Universidade Norte do Paraná",
+            "period": "Feb 2022 – Aug 2022"
+        },
+        "design": {
+            "title": "Graphic Design",
+            "school": "Universidade Paulista (UNIP)",
+            "period": "Aug 2019 – Dec 2021"
+        },
+        "experience": "Professional Experience",
+        "artDir": {
+            "title": "Art Director & Graphic Designer",
+            "years": "4+ years of experience",
+            "description": "Art direction for campaigns and visual identities for major brands — from concept to final deliverable."
+        },
+        "brands": "Brands served",
+        "frontend": {
+            "title": "Frontend Developer (Projects)",
+            "period": "Currently",
+            "description": "Building interfaces focused on performance, accessibility, and visual consistency — from Figma to deploy."
+        },
+        "stack": "Tech Stack"
+    },
+    "footer": {
+        "copyright": "© 2025 Débora"
+    }
+}

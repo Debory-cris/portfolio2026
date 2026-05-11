@@ -1,8 +1,9 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations, useLocale } from "next-intl";
 import Container from "./Container";
-import Typewriter from 'typewriter-effect';
+import Typewriter from "typewriter-effect";
 import { Search, Download } from "lucide-react";
 
 const FLOATING_SKILLS = [
@@ -22,7 +23,6 @@ const CAROUSEL_IMAGES = [
     { src: "/projects/starbucks.png", alt: "Starbucks Clone" },
     { src: "/projects/natura.png", alt: "Natura" },
     { src: "/projects/avon.png", alt: "Avon" },
-    // duplicados para loop infinito sem salto
     { src: "/projects/toti.png", alt: "Toti" },
     { src: "/projects/verdant.png", alt: "Verdant" },
     { src: "/projects/starbucks.png", alt: "Starbucks Clone" },
@@ -33,20 +33,22 @@ const CAROUSEL_IMAGES = [
 export default function Hero() {
     const inputRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
+    const locale = useLocale();
+    const t = useTranslations("hero");
 
     const goToProjects = () => {
-        router.push("/projects");
+        router.push(`/${locale}/projects`);
     };
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === "Enter") {
-                router.push("/projects");
+                router.push(`/${locale}/projects`);
             }
         };
         window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [router]);
+    }, [router, locale]);
 
     return (
         <>
@@ -95,7 +97,7 @@ export default function Hero() {
                     <div className="flex flex-col items-center text-center px-4 max-w-3xl mx-auto">
 
                         <h1 className="text-4xl md:text-7xl font-semibold text-primary mb-8 tracking-tighter font-zilla">
-                            Hi, I'm <span className="text-tertiary">Débora!</span>
+                            {t("title")}<span className="text-tertiary">{t("name")}</span>
                         </h1>
 
                         {/* Search bar */}
@@ -112,11 +114,12 @@ export default function Hero() {
                                 <Search className="text-tertiary mr-4 w-5 h-5 flex-shrink-0" />
                                 <div className="text-lg md:text-xl text-primary/70 font-light text-left font-sans w-full">
                                     <Typewriter
+                                        key={locale}
                                         options={{
                                             strings: [
-                                                "Search for a Frontend Developer...",
-                                                "Search for minimalist web design...",
-                                                "Search for React & Next.js projects...",
+                                                t("searchPlaceholder1"),
+                                                t("searchPlaceholder2"),
+                                                t("searchPlaceholder3"),
                                             ],
                                             autoStart: true,
                                             loop: true,
@@ -132,7 +135,7 @@ export default function Hero() {
                                 onClick={goToProjects}
                                 className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-[10px] text-quaternary tracking-[0.3em] uppercase font-bold whitespace-nowrap hover:text-secondary transition-colors"
                             >
-                                Press enter to discover
+                                {t("pressEnter")}
                             </button>
                         </div>
 
@@ -167,7 +170,7 @@ export default function Hero() {
                     className="flex items-center gap-2.5 px-7 py-3.5 rounded-full border border-slate-200 text-sm font-semibold text-slate-600 hover:border-[var(--secondary)] hover:text-[var(--secondary)] hover:shadow-md transition-all duration-300 group"
                 >
                     <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-300" />
-                    Download CV
+                    {t("downloadCV")}
                 </a>
             </div>
         </>
