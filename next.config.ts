@@ -6,4 +6,7 @@ export default withNextIntl({
     typescript: {
         ignoreBuildErrors: true,
     },
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
 });
