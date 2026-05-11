@@ -27,13 +27,14 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
   const messages = await getMessages();
 
   return (
     <html
-      lang={params.locale}
+      lang={locale}
       className={`${zillaSlab.variable} ${inter.variable} h-full antialiased`}
       style={{ colorScheme: 'light' }}
     >
