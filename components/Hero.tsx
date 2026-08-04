@@ -1,178 +1,311 @@
 "use client";
+
+import { useLocale, useTranslations } from "next-intl";
+import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
-import { useTranslations, useLocale } from "next-intl";
 import Container from "./Container";
-import Typewriter from "typewriter-effect";
-import { Search, Download } from "lucide-react";
+import { Download, ArrowUpRight } from "lucide-react";
 
-const FLOATING_SKILLS = [
-    { label: "React", x: "8%", y: "20%" },
-    { label: "Next.js", x: "78%", y: "15%" },
-    { label: "Figma", x: "85%", y: "60%" },
-    { label: "Tailwind", x: "5%", y: "65%" },
-    { label: "TypeScript", x: "70%", y: "80%" },
-    { label: "UI/UX", x: "15%", y: "80%" },
-    { label: "Branding", x: "88%", y: "38%" },
-    { label: "Adobe", x: "3%", y: "42%" },
-];
-
-const CAROUSEL_IMAGES = [
-    { src: "/projects/toti.png", alt: "Toti" },
-    { src: "/projects/verdant.png", alt: "Verdant" },
-    { src: "/projects/starbucks.png", alt: "Starbucks Clone" },
-    { src: "/projects/natura.png", alt: "Natura" },
-    { src: "/projects/avon.png", alt: "Avon" },
-    { src: "/projects/toti.png", alt: "Toti" },
-    { src: "/projects/verdant.png", alt: "Verdant" },
-    { src: "/projects/starbucks.png", alt: "Starbucks Clone" },
-    { src: "/projects/natura.png", alt: "Natura" },
-    { src: "/projects/avon.png", alt: "Avon" },
-];
+type StudyProject = {
+    id: string;
+    titleKey: string;
+    tags: string[];
+    image: string;
+    url: string;
+};
 
 export default function Hero() {
-    const inputRef = useRef<HTMLDivElement>(null);
-    const router = useRouter();
     const locale = useLocale();
     const t = useTranslations("hero");
+    const tJourney = useTranslations("journey");
 
-    const goToProjects = () => {
-        router.push(`/${locale}/projects`);
-    };
+    const heroRef = useRef<HTMLDivElement>(null);
+    const butterflyRef = useRef<HTMLDivElement>(null);
+
+    const studyProjects: StudyProject[] = [
+        {
+            id: "TotiPet",
+            titleKey: "totiTitle",
+            tags: ["Next.js", "Tailwind CSS", "Lottie Animations", "Vercel"],
+            image: "/projects/toti.png",
+            url: "https://toti-pet-health.vercel.app/"
+        },
+        {
+            id: "Conversor",
+            titleKey: "conversorTitle",
+            tags: ["React Native", "Expo", "TypeScript", "API"],
+            image: "/projects/conversor.png",
+            url: "https://appetize.io/embed/b_clf3yzcnyyg5af25nlkyh7d7ty?device=pixel9pro&launchUrl=exp%3A%2F%2Fu.expo.dev%2F933fd9c0-1666-11e7-afca-d980795c5824%3Fruntime-version%3Dexposdk%253A54.0.0%26channel-name%3Dproduction%26snack%3D%2540deboracrism%252Fconversor_app%26snack-channel%3D7m0byyVGqY&params=%7B%22EXDevMenuDisableAutoLaunch%22%3Atrue%2C%22EXKernelDisableNuxDefaultsKey%22%3Atrue%7D&appearance=light&deviceColor=black&scale=auto&orientation=portrait&centered=both"
+        },
+        {
+            id: "game",
+            titleKey: "gameTitle",
+            tags: ["HTML5", "Mobile Touch"],
+            image: "/projects/game.png",
+            url: "https://game-love-teal.vercel.app/"
+        }
+    ];
 
     useEffect(() => {
-        const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === "Enter") {
-                router.push(`/${locale}/projects`);
-            }
+        const hero = heroRef.current;
+        const butterfly = butterflyRef.current;
+        if (!hero || !butterfly) return;
+
+        let mouseX = 0;
+        let mouseY = 0;
+        let bX = 0;
+        let bY = 0;
+        let isInside = false;
+
+        const onMouseMove = (e: MouseEvent) => {
+            const rect = hero.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
         };
-        window.addEventListener("keydown", handleKeyDown);
-        return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [router, locale]);
+
+        const onMouseEnter = () => {
+            isInside = true;
+            butterfly.style.opacity = "0.75";
+            butterfly.style.transform = "translate(-50%, -50%) scale(1)";
+        };
+
+        const onMouseLeave = () => {
+            isInside = false;
+            butterfly.style.opacity = "0";
+            butterfly.style.transform = "translate(-50%, -50%) scale(0.4)";
+        };
+
+        const tick = () => {
+            if (isInside) {
+                bX += (mouseX - bX) * 0.08;
+                bY += (mouseY - bY) * 0.08;
+
+                const deltaX = mouseX - bX;
+                const angle = Math.atan2(mouseY - bY, deltaX) * (180 / Math.PI);
+
+                butterfly.style.left = `${bX}px`;
+                butterfly.style.top = `${bY}px`;
+                butterfly.style.transform = `translate(-50%, -50%) rotate(${angle + 90}deg)`;
+            }
+            requestAnimationFrame(tick);
+        };
+
+        hero.addEventListener("mousemove", onMouseMove);
+        hero.addEventListener("mouseenter", onMouseEnter);
+        hero.addEventListener("mouseleave", onMouseLeave);
+
+        const animId = requestAnimationFrame(tick);
+
+        return () => {
+            hero.removeEventListener("mousemove", onMouseMove);
+            hero.removeEventListener("mouseenter", onMouseEnter);
+            hero.removeEventListener("mouseleave", onMouseLeave);
+            cancelAnimationFrame(animId);
+        };
+    }, []);
 
     return (
         <>
-            {/* ── Hero Banner ─────────────────────────────────────────────── */}
-            <section className="relative w-full h-[85vh] md:h-screen min-h-[500px] bg-white flex items-center overflow-hidden">
-
-                {/* Floating skill badges */}
-                <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
-                    {FLOATING_SKILLS.map((skill, i) => (
-                        <span
-                            key={skill.label}
-                            className="absolute text-[11px] font-bold tracking-wide uppercase px-3 py-1.5 rounded-full border border-slate-200 bg-white/70 backdrop-blur-sm text-slate-400 shadow-sm"
-                            style={{
-                                left: skill.x,
-                                top: skill.y,
-                                animation: `floatBadge ${4 + (i % 3)}s ease-in-out infinite`,
-                                animationDelay: `${i * 0.4}s`,
-                            }}
-                        >
-                            {skill.label}
-                        </span>
-                    ))}
+            {/* ── Hero Banner Editorial ─────────────────────────────────────────────── */}
+            <section
+                ref={heroRef}
+                className="relative w-full min-h-[70vh] flex items-center overflow-hidden bg-[var(--background)] pt-24 pb-16 cursor-none"
+            >
+                <div
+                    ref={butterflyRef}
+                    className="absolute pointer-events-none z-30 opacity-0 transition-opacity transition-transform duration-500 will-change-transform mix-blend-multiply"
+                    style={{ left: 0, top: 0, transform: "translate(-50%, -50%) scale(0.5)" }}
+                >
+                    <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="var(--color-secondary)"
+                        strokeWidth="1"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="butterfly-wings"
+                    >
+                        <path d="M12 2v20" />
+                        <path d="M12 4c-1.5-2.5-5.5-2.5-7 0-1.5 2.5-1.5 6 0 8.5 1.5 2.5 5.5 2.5 7 0" />
+                        <path d="M12 12c-1.5-1.5-5.5-1.5-7 0s-1.5 4 0 5.5c1.5 1.5 5.5 1.5 7 0" />
+                        <path d="M12 4c1.5-2.5 5.5-2.5 7 0 1.5 2.5 1.5 6 0 8.5-1.5 2.5-5.5 2.5-7 0" />
+                        <path d="M12 12c1.5-1.5 5.5-1.5 7 0s1.5 4 0 5.5c-1.5 1.5-5.5 1.5-7 0" />
+                    </svg>
                 </div>
 
-                <style>{`
-                    @keyframes floatBadge {
-                        0%, 100% { transform: translateY(0px); opacity: 0.5; }
-                        50%       { transform: translateY(-10px); opacity: 0.9; }
-                    }
-                    @keyframes marquee {
-                        0%   { transform: translateX(0); }
-                        100% { transform: translateX(-50%); }
-                    }
-                    .carousel-track {
-                        display: flex;
-                        gap: 16px;
-                        width: max-content;
-                        animation: marquee 28s linear infinite;
-                    }
-                    .carousel-track:hover {
-                        animation-play-state: paused;
-                    }
-                `}</style>
+                <Container className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-16">
+                    <div className="overflow-hidden mb-12">
+                        <span className="inline-block text-[10px] font-bold tracking-[0.35em] uppercase text-[var(--color-secondary)] dynamic-reveal">
+                            ✦ Creative Engineering Portfolio — 2026
+                        </span>
+                    </div>
 
-                <Container className="relative z-10 w-full">
-                    <div className="flex flex-col items-center text-center px-4 max-w-3xl mx-auto">
+                    <div className="max-w-6xl mb-16 dynamic-reveal-delayed">
+                        <h1 className="font-custom font-normal text-5xl sm:text-7xl md:text-8xl lg:text-[105px] leading-[0.95] tracking-tight text-[var(--color-primary)]">
+                            {t("titleLine1")}<br />
+                            {t("titleLine2")} <span className="italic font-light text-[var(--color-secondary)] tracking-normal">{t("titleHighlight")}</span> <br />
 
-                        <h1 className="text-4xl md:text-7xl font-semibold text-primary mb-8 tracking-tighter font-zilla">
-                            {t("title")}<span className="text-tertiary">{t("name")}</span>
+                            <span className="font-sans font-light text-[0.35em] tracking-tighter text-[var(--color-tertiary)] inline-flex items-center align-middle relative -top-3 md:-top-6 bg-[var(--color-quaternary)]/5 px-3 py-1 rounded-xl border border-[var(--color-tertiary)]/20">
+                                <span>{"{"}</span>
+                                <span className="dev-typewriter mx-1.5 font-mono text-[0.65em] font-medium tracking-normal text-[var(--color-secondary)]"></span>
+                                <span>{"}"}</span>
+                            </span>
                         </h1>
+                    </div>
 
-                        {/* Search bar */}
-                        <div className="w-full relative group">
-                            <div
-                                ref={inputRef}
-                                tabIndex={0}
-                                onClick={goToProjects}
-                                className="flex items-center w-full bg-white/80 backdrop-blur-sm border border-secondary/20 shadow-sm rounded-full px-6 py-4 md:py-5 transition-all duration-300 hover:shadow-md hover:border-tertiary/40 cursor-pointer"
-                                onKeyDown={(e) => {
-                                    if (e.key === "Enter") goToProjects();
-                                }}
-                            >
-                                <Search className="text-tertiary mr-4 w-5 h-5 flex-shrink-0" />
-                                <div className="text-lg md:text-xl text-primary/70 font-light text-left font-sans w-full">
-                                    <Typewriter
-                                        key={locale}
-                                        options={{
-                                            strings: [
-                                                t("searchPlaceholder1"),
-                                                t("searchPlaceholder2"),
-                                                t("searchPlaceholder3"),
-                                            ],
-                                            autoStart: true,
-                                            loop: true,
-                                            delay: 50,
-                                            deleteSpeed: 30,
-                                            wrapperClassName: "typewriter-text",
-                                        }}
-                                    />
-                                </div>
-                            </div>
+                    <div className="flex flex-wrap gap-8 pt-8 border-t border-[var(--color-quaternary)]/10 w-full dynamic-reveal-delayed-more">
+                        <a
+                            href="/curriculo-debora-meireles.pdf"
+                            download
+                            className="inline-flex items-center gap-2 text-[11px] font-bold tracking-wider uppercase text-[var(--color-primary)] hover:text-[var(--color-secondary)] transition-colors group"
+                        >
+                            <Download className="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform duration-300" />
+                            {t("downloadCV")}
+                        </a>
 
-                            <button
-                                onClick={goToProjects}
-                                className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-[10px] text-quaternary tracking-[0.3em] uppercase font-bold whitespace-nowrap hover:text-secondary transition-colors"
-                            >
-                                {t("pressEnter")}
-                            </button>
-                        </div>
-
+                        <Link
+                            href={`/${locale}/projects`}
+                            className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-wider uppercase text-[var(--color-secondary)] hover:text-[var(--color-primary)] transition-colors group"
+                        >
+                            {t("viewIndex")}
+                            <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                        </Link>
                     </div>
                 </Container>
+
+                <style>{`
+                    @keyframes revealUp {
+                        from { transform: translateY(25px); opacity: 0; }
+                        to   { transform: translateY(0); opacity: 1; }
+                    }
+                    @keyframes devTyping {
+                        0%, 100% { content: ""; }
+                        5%, 20%  { content: "dev"; }
+                        25%, 40% { content: "code"; }
+                        45%, 60% { content: "ui"; }
+                        65%, 80% { content: "exec"; }
+                        85%, 95% { content: "deploy"; }
+                    }
+                    @keyframes flapWings {
+                        0%, 100% { transform: scaleX(1); }
+                        50%      { transform: scaleX(0.2); }
+                    }
+                    .butterfly-wings {
+                        animation: flapWings 0.35s infinite ease-in-out;
+                        transform-origin: center center;
+                    }
+                    .dev-typewriter::after {
+                        content: "|";
+                        animation: blink 0.8s infinite;
+                        margin-left: 1px;
+                    }
+                    .dev-typewriter::before {
+                        content: "";
+                        animation: devTyping 12s infinite;
+                    }
+                    @keyframes blink {
+                        0%, 100% { opacity: 1; }
+                        50% { opacity: 0; }
+                    }
+                    .dynamic-reveal { animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+                    .dynamic-reveal-delayed { animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both; }
+                    .dynamic-reveal-delayed-more { animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both; }
+                `}</style>
             </section>
 
-            {/* ── Carousel ────────────────────────────────────────────────── */}
-            <div className="w-full overflow-hidden bg-white border-y border-slate-100 py-6">
-                <div className="carousel-track">
-                    {CAROUSEL_IMAGES.map((img, i) => (
-                        <div
-                            key={i}
-                            className="flex-shrink-0 w-[280px] md:w-[340px] h-[180px] md:h-[220px] rounded-2xl overflow-hidden bg-slate-100 shadow-sm"
-                        >
+            {/* ── Seção A Jornada ────────────────────────────────────────────────── */}
+            <section className="w-full bg-[var(--color-primary)] pt-24 pb-12 border-t border-[var(--color-quaternary)]/10 relative z-10">
+                <div className="max-w-7xl mx-auto px-6 md:px-16">
+
+                    <div className="border-b border-[var(--color-tertiary)]/10 pb-6 mb-12">
+                        <h2 className="text-[10px] font-bold tracking-[0.25em] uppercase text-[var(--color-tertiary)]">
+                            // {tJourney("title")}
+                        </h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 items-start">
+                        <div className="w-full aspect-[4/4] sm:max-w-[280px] rounded-2xl overflow-hidden bg-[var(--color-quaternary)]/5 border border-[var(--color-tertiary)]/10 shadow-[0_20px_40px_rgba(0,0,0,0.15)] mx-auto md:mx-0">
                             <img
-                                src={img.src}
-                                alt={img.alt}
-                                className="w-full h-full object-cover"
-                                draggable={false}
+                                src="/perfil2.png"
+                                alt="Débora Cristina Meireles"
+                                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                             />
                         </div>
-                    ))}
-                </div>
-            </div>
 
-            {/* ── Download CV ─────────────────────────────────────────────── */}
-            <div className="w-full flex justify-center bg-white py-10">
-                <a
-                    href="/curriculo-debora-meireles.pdf"
-                    download
-                    className="flex items-center gap-2.5 px-7 py-3.5 rounded-full border border-slate-200 text-sm font-semibold text-slate-600 hover:border-[var(--secondary)] hover:text-[var(--secondary)] hover:shadow-md transition-all duration-300 group"
-                >
-                    <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-300" />
-                    {t("downloadCV")}
-                </a>
-            </div>
+                        <div className="max-w-3xl pt-1 md:pt-0">
+                            <p className="text-xl font-light text-[var(--color-tertiary)] leading-relaxed tracking-tight">
+                                {tJourney("p1")}
+                            </p>
+                            <p className="text-xl font-light text-[var(--color-tertiary)] opacity-90 leading-relaxed tracking-tight mt-6">
+                                {tJourney("p2")}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ── Seção: Projetos de Estudo ────────────────────────────────────────────────── */}
+            <section className="w-full bg-[var(--background)] pb-32 relative z-10">
+                <div className="max-w-7xl mx-auto px-6 md:px-16">
+
+                    <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 items-baseline border-t border-[var(--color-quaternary)]/10 pt-16 mb-16">
+                        <div>
+                            <h2 className="text-[10px] font-bold tracking-[0.25em] uppercase text-[var(--color-secondary)]">
+                                // {t("practiceEyebrow")}
+                            </h2>
+                        </div>
+                        <div>
+                            <h3 className="font-custom font-normal text-3xl md:text-4xl text-[var(--color-primary)] italic">
+                                {t("practiceTitle")}
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12">
+                        {studyProjects.map((project) => (
+                            <a
+                                key={project.id}
+                                href={project.url}
+                                target={project.url !== "#" ? "_blank" : undefined}
+                                rel="noopener noreferrer"
+                                className="group relative block w-full aspect-[16/10] bg-[var(--color-quaternary)]/5 rounded-2xl overflow-hidden border border-[var(--color-quaternary)]/5"
+                            >
+                                <div className="w-full h-full overflow-hidden relative">
+                                    <img
+                                        src={project.image}
+                                        alt={t(project.titleKey)}
+                                        className="w-full h-full object-cover transition-transform duration-700 ease-[0.16,1,0.3,1] group-hover:scale-105"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-primary)]/80 via-[var(--color-primary)]/10 to-transparent opacity-40 group-hover:opacity-80 transition-opacity duration-500" />
+                                </div>
+
+                                <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end text-[var(--background)] z-10 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                    <div className="flex flex-wrap gap-2 mb-3">
+                                        {project.tags.map((tag) => (
+                                            <span
+                                                key={tag}
+                                                className="text-[9px] font-bold tracking-widest uppercase border border-[var(--background)]/30 bg-[var(--color-primary)]/30 backdrop-blur-sm px-2.5 py-1 rounded-full"
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                    <div className="flex items-center justify-between gap-4">
+                                        <h4 className="font-serif text-xl md:text-2xl font-light text-[var(--background)] tracking-tight">
+                                            {t(project.titleKey)}
+                                        </h4>
+                                        <ArrowUpRight size={20} className="text-[var(--color-tertiary)] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500" />
+                                    </div>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+
+                    <div className="border-b border-[var(--color-quaternary)]/5 pt-20" />
+                </div>
+            </section>
         </>
     );
 }

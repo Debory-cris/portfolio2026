@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Kudry Weird';
+  src: url('/font/kudry_weird-headline.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-custom: 'Kudry Weird', serif;
+}
+
 @theme {
 
   --color-primary: var(--primary);
@@ -7,26 +19,20 @@
   --color-tertiary: var(--tertiary);
   --color-quaternary: var(--quaternary);
 
-  --font-zilla: var(--font-zilla-slab);
   --font-sans: var(--font-inter);
 }
 
 :root {
-  /* Cores exatas do logo */
-  --primary: #1A032E;
-  --secondary: #4FA8F4;
-  --tertiary: #E83E8C;
-  --quaternary: #FF9800;
+  --primary: #4b0113;
+  --secondary: #810220;
+  --tertiary: #e4bdab;
+  --quaternary: #292828;
 
-  --background: #ffffff;
-  --foreground: #1A032E;
+  --background: #fcf6ef;
+  --foreground: #530131;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-}
-
-.Typewriter__cursor {
-  color: #fb7185;
 }

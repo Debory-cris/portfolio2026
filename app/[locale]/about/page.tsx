@@ -1,6 +1,46 @@
 "use client";
-import { IoMdSchool, IoMdBriefcase, IoMdCodeWorking, IoMdGlobe } from "react-icons/io";
+
 import { useTranslations } from "next-intl";
+import { ArrowUpRight, Download, Globe } from "lucide-react";
+
+type PracticeProject = {
+    id: string;
+    nameKey: string;
+    stack: string;
+    descKey: string;
+    link: string;
+};
+
+const projects: PracticeProject[] = [
+    {
+        id: "toti",
+        nameKey: "projects.toti.name",
+        stack: "Next.js · TypeScript · Tailwind CSS · Lottie",
+        descKey: "projects.toti.desc",
+        link: "https://toti-pet-health.vercel.app/",
+    },
+    {
+        id: "verdante",
+        nameKey: "projects.verdante.name",
+        stack: "React",
+        descKey: "projects.verdante.desc",
+        link: "https://verdante-landing.vercel.app/",
+    },
+    {
+        id: "conversor",
+        nameKey: "projects.conversor.name",
+        stack: "React Native · Expo · EAS Build",
+        descKey: "projects.conversor.desc",
+        link: "https://snack.expo.dev/@deboracrism/conversor_app?platform=android",
+    },
+    {
+        id: "game",
+        nameKey: "projects.game.name",
+        stack: "HTML5 · JavaScript",
+        descKey: "projects.game.desc",
+        link: "https://game-love-teal.vercel.app/",
+    },
+];
 
 export default function AboutMe() {
     const t = useTranslations("about");
@@ -8,125 +48,181 @@ export default function AboutMe() {
     return (
         <section
             id="about"
-            className="max-w-6xl mx-auto py-24 px-6 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-start scroll-mt-20 font-sans"
+            className="w-full bg-[var(--background)] py-32 border-t border-[var(--color-quaternary)]/15 text-[var(--color-primary)] font-sans antialiased"
         >
-            {/* Coluna da Foto e Perfil */}
-            <div className="md:col-span-1 flex flex-col items-center md:items-start text-center md:text-left md:sticky md:top-28 w-full mb-10 md:mb-0">
-                <div className="w-56 h-64 md:w-60 md:h-72 rounded-2xl overflow-hidden mb-6 shadow-xl border-2 border-blue-500/10 transition-transform hover:scale-105 duration-300 mx-auto md:mx-0">
-                    <img
-                        src="/perfil.png"
-                        alt="Débora Cristina Meireles"
-                        className="w-full h-full object-cover"
-                    />
-                </div>
-                <h1 className="text-3xl font-bold mb-2 text-[var(--primary)] font-zilla">Débora Cristina Meireles</h1>
-                <p className="text-[var(--secondary)] font-semibold mb-4 tracking-wide uppercase text-sm">
-                    Frontend Developer & Art Director
-                </p>
-                <p className="text-slate-600 text-base leading-relaxed mb-6">
-                    {t("tagline")}
-                </p>
+            <div className="max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-16 items-start">
 
-                {/* Idioma */}
-                <div className="flex items-center gap-2 text-[var(--primary)] bg-[var(--tertiary)]/25 px-4 py-2 rounded-lg border border-[var(--tertiary)]">
-                    <IoMdGlobe className="text-[var(--tertiary)]" />
-                    <span className="text-sm font-medium">{t("english")}: <strong>{t("englishLevel")}</strong></span>
-                </div>
+                {/* ── COLUNA DA ESQUERDA: PERFIL EDITORIAL (STICKY) ────────────────── */}
+                <div className="md:sticky md:top-12 flex flex-col items-start w-full">
 
-                {/* Botão CV */}
-                <a
-                    href="/curriculo-debora-meireles.pdf"
-                    download
-                    className="flex items-center gap-2 mt-3 px-4 py-2 rounded-lg border border-slate-200 text-sm font-semibold text-slate-600 hover:border-[var(--secondary)] hover:text-[var(--secondary)] transition-all group"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
-                    </svg>
-                    {t("downloadCV")}
-                </a>
-            </div>
+                    {/* Imagem de Perfil com Borda de Destaque */}
+                    <div className="w-full aspect-[4/5] sm:max-w-[280px] rounded-2xl overflow-hidden mb-8 bg-[var(--color-quaternary)]/10 border border-[var(--color-quaternary)]/20 shadow-[0_20px_40px_rgba(0,0,0,0.06)]">
+                        <img
+                            src="/perfil.png"
+                            alt="Débora Cristina Meireles"
+                            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                        />
+                    </div>
 
-            {/* Coluna do "Currículo" */}
-            <div className="md:col-span-2 space-y-12">
+                    {/* Nome em Sans-serif Robusta */}
+                    <h1 className="font-sans text-2xl md:text-3xl font-bold tracking-tight text-[var(--color-primary)] mb-1">
+                        Débora Cristina Meireles
+                    </h1>
 
-                {/* Formação Acadêmica */}
-                <div>
-                    <h2 className="text-xl font-bold mb-6 border-b pb-2 flex items-center gap-2 text-[var(--primary)]">
-                        <IoMdSchool className="text-[var(--secondary)]" size={24} /> {t("education")}
-                    </h2>
-                    <div className="flex flex-col gap-4">
+                    <p className="text-[11px] font-bold tracking-[0.25em] uppercase text-[var(--color-secondary)] mb-6">
+                        Frontend Developer
+                    </p>
 
-                        <div className="p-5 rounded-xl bg-slate-50 border border-slate-100 relative overflow-hidden group">
-                            <div className="absolute left-0 top-0 w-1 h-full bg-[var(--secondary)]"></div>
-                            <div className="flex justify-between items-start">
-                                <div>
-                                    <h3 className="font-bold text-slate-800">{t("cs.title")}</h3>
-                                    <p className="text-sm text-[var(--secondary)] font-medium">{t("cs.school")}</p>
-                                </div>
-                                <span className="text-[10px] font-bold bg-blue-100 text-[var(--secondary)] px-2 py-1 rounded">{t("inProgress")}</span>
-                            </div>
-                            <p className="text-xs text-slate-500 mt-2 font-medium">{t("cs.period")}</p>
+                    <p className="text-sm text-[var(--color-primary)] opacity-90 leading-relaxed font-normal mb-8 max-w-sm">
+                        {t("tagline")}
+                    </p>
+
+                    {/* Metadados e Links */}
+                    <div className="flex flex-col gap-4 w-full pt-6 border-t border-[var(--color-quaternary)]/20">
+                        <div className="flex items-center gap-2.5 text-[var(--color-primary)]">
+                            <Globe size={15} className="text-[var(--color-secondary)] shrink-0" />
+                            <span className="text-xs font-normal">
+                                {t("english")}: <strong className="font-semibold text-[var(--color-secondary)]">{t("englishLevel")}</strong>
+                            </span>
                         </div>
 
-                        <div className="p-5 rounded-xl bg-slate-50 border border-slate-100 hover:bg-blue-50/30 transition-colors">
-                            <h3 className="font-bold text-slate-800">{t("uxui.title")}</h3>
-                            <p className="text-sm text-[var(--secondary)] font-medium">{t("uxui.school")}</p>
-                            <p className="text-xs text-slate-500 mt-2 font-medium">{t("uxui.period")}</p>
-                        </div>
-
-                        <div className="p-5 rounded-xl bg-slate-50 border border-slate-100 hover:bg-blue-50/30 transition-colors">
-                            <h3 className="font-bold text-slate-800">{t("design.title")}</h3>
-                            <p className="text-sm text-[var(--secondary)] font-medium">{t("design.school")}</p>
-                            <p className="text-xs text-slate-500 mt-2 font-medium">{t("design.period")}</p>
-                        </div>
+                        <a
+                            href="/curriculo-debora-meireles.pdf"
+                            download
+                            className="inline-flex items-center gap-2 text-[11px] font-bold tracking-wider uppercase text-[var(--color-primary)] hover:text-[var(--color-secondary)] transition-colors group mt-2"
+                        >
+                            <Download size={15} className="group-hover:translate-y-0.5 transition-transform duration-300 text-[var(--color-secondary)]" />
+                            {t("downloadCV")}
+                        </a>
                     </div>
                 </div>
 
-                {/* Experiência Profissional */}
-                <div>
-                    <h2 className="text-xl font-bold mb-6 border-b pb-2 flex items-center gap-2 text-[var(--primary)]">
-                        <IoMdBriefcase className="text-[var(--secondary)]" /> {t("experience")}
-                    </h2>
-                    <div className="space-y-8 border-l-2 border-slate-100 pl-6">
-                        <div className="relative">
-                            <div className="absolute -left-[25px] top-1 w-4 h-4 rounded-full bg-[var(--secondary)] border-4 border-white" />
-                            <h3 className="font-bold text-lg text-slate-800">{t("artDir.title")}</h3>
-                            <p className="text-sm text-[var(--secondary)] font-medium">{t("artDir.years")}</p>
-                            <p className="mt-2 text-slate-600 leading-relaxed text-sm">
+                {/* ── COLUNA DA DIREITA: HISTÓRICO COM HIERARQUIA VIBRANTE ────────── */}
+                <div className="space-y-20 w-full">
+
+                    {/* 1. Formação Acadêmica */}
+                    <div>
+                        <div className="flex items-baseline gap-4 border-b border-[var(--color-quaternary)]/20 pb-4 mb-8">
+                            <span className="font-mono text-xs font-bold text-[var(--color-secondary)]">01 //</span>
+                            <h2 className="font-custom text-2xl md:text-3xl font-normal italic text-[var(--color-primary)]">{t("education")}</h2>
+                        </div>
+
+                        <div className="flex flex-col gap-5">
+                            {/* Card 1 (Destaque Cursando) */}
+                            <div className="relative p-6 rounded-2xl border border-[var(--color-secondary)]/40 bg-[var(--color-quaternary)]/10 shadow-sm transition-all hover:border-[var(--color-secondary)]">
+                                <div className="absolute left-0 top-0 w-1.5 h-full bg-[var(--color-secondary)] rounded-l-2xl" />
+                                <div className="flex justify-between items-start gap-4">
+                                    <div>
+                                        <h3 className="font-sans text-base font-bold tracking-tight text-[var(--color-primary)]">{t("cs.title")}</h3>
+                                        <p className="text-xs font-semibold text-[var(--color-secondary)] mt-1">{t("cs.school")}</p>
+                                    </div>
+                                    <span className="text-[9px] font-bold tracking-widest uppercase bg-[var(--color-secondary)] text-[var(--background)] px-3 py-1 rounded-full shadow-sm shrink-0">
+                                        {t("inProgress")}
+                                    </span>
+                                </div>
+                                <p className="text-[11px] font-semibold text-[var(--color-primary)] opacity-70 mt-4 font-mono">{t("cs.period")}</p>
+                            </div>
+
+                            {/* Card 2 */}
+                            <div className="p-6 rounded-2xl border border-[var(--color-quaternary)]/20 bg-[var(--color-quaternary)]/5 hover:border-[var(--color-quaternary)]/40 hover:bg-[var(--color-quaternary)]/10 transition-all">
+                                <h3 className="font-sans text-base font-bold tracking-tight text-[var(--color-primary)]">{t("uxui.title")}</h3>
+                                <p className="text-xs font-semibold text-[var(--color-secondary)] mt-1">{t("uxui.school")}</p>
+                                <p className="text-[11px] font-semibold text-[var(--color-primary)] opacity-70 mt-3 font-mono">{t("uxui.period")}</p>
+                            </div>
+
+                            {/* Card 3 */}
+                            <div className="p-6 rounded-2xl border border-[var(--color-quaternary)]/20 bg-[var(--color-quaternary)]/5 hover:border-[var(--color-quaternary)]/40 hover:bg-[var(--color-quaternary)]/10 transition-all">
+                                <h3 className="font-sans text-base font-bold tracking-tight text-[var(--color-primary)]">{t("design.title")}</h3>
+                                <p className="text-xs font-semibold text-[var(--color-secondary)] mt-1">{t("design.school")}</p>
+                                <p className="text-[11px] font-semibold text-[var(--color-primary)] opacity-70 mt-3 font-mono">{t("design.period")}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* 2. Experiência Profissional */}
+                    <div>
+                        <div className="flex items-baseline gap-4 border-b border-[var(--color-quaternary)]/20 pb-4 mb-8">
+                            <span className="font-mono text-xs font-bold text-[var(--color-secondary)]">02 //</span>
+                            <h2 className="font-custom text-2xl md:text-3xl font-normal italic text-[var(--color-primary)]">{t("experience")}</h2>
+                        </div>
+
+                        <div className="relative pl-6 border-l-2 border-[var(--color-secondary)]">
+                            <div className="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-[var(--color-secondary)] shadow-[0_0_10px_rgba(0,0,0,0.15)]" />
+                            <h3 className="font-sans text-lg font-bold tracking-tight text-[var(--color-primary)]">{t("artDir.title")}</h3>
+                            <p className="text-xs font-bold text-[var(--color-secondary)] tracking-widest uppercase mt-1">{t("artDir.years")}</p>
+
+                            <p className="mt-4 text-sm text-[var(--color-primary)] opacity-90 leading-relaxed font-normal max-w-2xl">
                                 {t("artDir.description")}
                             </p>
-                            <p className="mt-2 text-[10px] uppercase tracking-wider text-slate-400 font-bold">
-                                {t("brands")}: <span className="text-slate-500">Natura • Avon • Unilever • Heliar</span>
-                            </p>
-                        </div>
-                        <div className="relative">
-                            <div className="absolute -left-[25px] top-1 w-4 h-4 rounded-full bg-slate-300 border-4 border-white" />
-                            <h3 className="font-bold text-lg text-slate-800">{t("frontend.title")}</h3>
-                            <p className="text-sm text-slate-500 italic font-medium">{t("frontend.period")}</p>
-                            <p className="mt-2 text-slate-600 leading-relaxed text-sm">
-                                {t("frontend.description")}
-                            </p>
+
+                            <div className="mt-6 pt-4 border-t border-[var(--color-quaternary)]/15">
+                                <p className="text-[10px] uppercase tracking-widest text-[var(--color-secondary)] font-bold mb-2">
+                                    {t("brands")}
+                                </p>
+                                <div className="flex flex-wrap gap-2">
+                                    {["Natura", "Avon", "Unilever", "Heliar"].map((brand) => (
+                                        <span key={brand} className="text-xs font-semibold px-3 py-1 rounded-lg bg-[var(--color-quaternary)]/10 border border-[var(--color-quaternary)]/20 text-[var(--color-primary)]">
+                                            {brand}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                {/* Stack Técnica */}
-                <div>
-                    <h2 className="text-xl font-bold mb-6 border-b pb-2 flex items-center gap-2 text-[var(--primary)]">
-                        <IoMdCodeWorking className="text-[var(--secondary)]" /> {t("stack")}
-                    </h2>
-                    <div className="flex flex-wrap gap-2">
-                        {['React', 'Next.js', 'Tailwind CSS', 'TypeScript', 'HTML', 'CSS', 'Figma', 'Adobe Pack', 'Lottie'].map((skill) => (
-                            <span
-                                key={skill}
-                                className="bg-white border border-slate-200 px-4 py-1.5 rounded-lg text-xs font-bold text-slate-600 shadow-sm hover:border-blue-400 hover:text-blue-600 transition-all cursor-default"
-                            >
-                                {skill}
-                            </span>
-                        ))}
+                    {/* 3. Projetos de Prática */}
+                    <div>
+                        <div className="flex items-baseline gap-4 border-b border-[var(--color-quaternary)]/20 pb-4 mb-8">
+                            <span className="font-mono text-xs font-bold text-[var(--color-secondary)]">03 //</span>
+                            <h2 className="font-custom text-2xl md:text-3xl font-normal italic text-[var(--color-primary)]">{t("practiceProjects")}</h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 gap-4">
+                            {projects.map((project) => (
+                                <a
+                                    key={project.id}
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="group p-6 rounded-2xl border border-[var(--color-quaternary)]/20 bg-[var(--color-quaternary)]/5 hover:border-[var(--color-secondary)] hover:bg-[var(--color-quaternary)]/10 transition-all duration-300 relative shadow-xs"
+                                >
+                                    <div className="flex justify-between items-baseline gap-4">
+                                        <h3 className="font-sans text-base font-bold tracking-tight text-[var(--color-primary)] group-hover:text-[var(--color-secondary)] transition-colors">
+                                            {t(project.nameKey)}
+                                        </h3>
+                                        <ArrowUpRight size={18} className="text-[var(--color-secondary)] opacity-40 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all shrink-0" />
+                                    </div>
+                                    <p className="text-[10px] font-bold tracking-widest uppercase text-[var(--color-secondary)] mt-1 mb-3">{project.stack}</p>
+                                    <p className="text-xs text-[var(--color-primary)] opacity-85 leading-relaxed font-normal">{t(project.descKey)}</p>
+                                </a>
+                            ))}
+                        </div>
                     </div>
-                </div>
 
+                    {/* 4. Tech Stack */}
+                    <div>
+                        <div className="flex items-baseline gap-4 border-b border-[var(--color-quaternary)]/20 pb-4 mb-8">
+                            <span className="font-mono text-xs font-bold text-[var(--color-secondary)]">04 //</span>
+                            <h2 className="font-custom text-2xl md:text-3xl font-normal italic text-[var(--color-primary)]">{t("stack")}</h2>
+                        </div>
+
+                        <div className="flex flex-wrap gap-2.5">
+                            {[
+                                'React', 'Next.js', 'React Native', 'TypeScript',
+                                'JavaScript (ES6+)', 'Tailwind CSS', 'HTML5', 'CSS3',
+                                'Figma', 'Adobe Pack', 'Lottie', 'Git / GitHub', 'Vercel'
+                            ].map((skill) => (
+                                <span
+                                    key={skill}
+                                    className="bg-[var(--color-quaternary)]/10 border border-[var(--color-quaternary)]/20 hover:border-[var(--color-secondary)] hover:bg-[var(--color-secondary)] hover:text-[var(--background)] px-4 py-2 rounded-xl text-xs font-semibold text-[var(--color-primary)] transition-all cursor-default shadow-xs"
+                                >
+                                    {skill}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </section>
     );

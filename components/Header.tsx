@@ -5,11 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import Logo from "../assets/logo-principal.svg";
+import Logo from "../assets/logo-principal.png";
 import Container from "./Container";
 
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
     const pathname = usePathname();
     const router = useRouter();
     const locale = useLocale();
@@ -28,57 +29,90 @@ export default function Header() {
     };
 
     useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 30) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    useEffect(() => {
         if (typeof document !== "undefined") {
             document.body.style.overflow = menuOpen ? "hidden" : "unset";
         }
     }, [menuOpen]);
 
     return (
-        <header className="fixed top-0 left-0 w-full z-[60] bg-white/80 backdrop-blur-md border-b border-slate-100 antialiased">
-            <Container>
+        <header
+            className={`fixed top-0 left-0 w-full z-[60] transition-all duration-500 antialiased ${scrolled
+                    ? "bg-[var(--color-primary)]/90 backdrop-blur-md text-[var(--color-tertiary)] border-b border-[var(--color-tertiary)]/20 shadow-lg py-1"
+                    : "bg-[var(--background)]/70 backdrop-blur-sm text-[var(--color-primary)] border-b border-[var(--color-quaternary)]/10 py-0"
+                }`}
+        >
+            <Container className="max-w-7xl mx-auto px-6 md:px-16">
                 <div className="flex items-center justify-between h-20">
 
-                    {/* LOGO */}
-                    <Link href={`/${locale}`} className="z-[70] transition-transform hover:scale-105 flex-shrink-0">
+                    {/* LOGO (Filtro CSS forçado para alterar a cor da imagem PNG no scroll) */}
+                    <Link href={`/${locale}`} className="z-[70] transition-transform flex-shrink-0">
                         <Image
                             src={Logo}
                             alt="Logo Débora"
                             width={160}
                             height={50}
-                            className="w-36 md:w-44 h-auto"
+                            className="w-32 md:w-36 h-auto transition-all duration-500"
+                            style={{
+                                filter: scrolled ? "brightness(0) invert(1)" : "none",
+                                mixBlendMode: scrolled ? "normal" : "multiply",
+                            }}
                             priority
                         />
                     </Link>
 
                     {/* DESKTOP NAV */}
-                    <nav className="hidden md:flex items-center gap-8 font-zilla text-lg text-primary">
+                    <nav className="hidden md:flex items-center gap-8 text-[11px] font-bold tracking-[0.2em] uppercase transition-colors duration-500">
                         {NAV_LINKS.map(({ href, label }) => {
                             const isActive = pathname === href;
                             return (
                                 <Link
                                     key={href}
                                     href={href}
-                                    className={`relative group transition-colors ${isActive ? "text-secondary" : "hover:text-secondary"}`}
+                                    className={`relative transition-colors duration-300 ${isActive
+                                            ? scrolled ? "text-[var(--background)]" : "text-[var(--color-secondary)]"
+                                            : scrolled ? "text-[var(--color-tertiary)]/80 hover:text-[var(--background)]" : "text-[var(--color-primary)] hover:text-[var(--color-secondary)]"
+                                        }`}
                                 >
                                     {label}
                                     <span
-                                        className={`absolute -bottom-1 left-0 h-0.5 bg-secondary transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"}`}
+                                        className={`absolute -bottom-1 left-0 h-[1px] transition-all duration-300 ${scrolled ? "bg-[var(--background)]" : "bg-[var(--color-secondary)]"
+                                            } ${isActive ? "w-full" : "w-0 group-hover:w-full"}`}
                                     />
                                 </Link>
                             );
                         })}
 
-                        {/* Language toggle */}
+                        {/* Seletor de Idioma */}
                         <button
                             onClick={toggleLocale}
-                            className="text-sm font-bold text-primary hover:text-secondary transition-colors border border-slate-200 rounded-full px-3 py-1"
+                            className={`text-[10px] font-bold tracking-widest transition-all cursor-pointer border rounded-full px-2.5 py-0.5 ${scrolled
+                                    ? "text-[var(--color-tertiary)] border-[var(--color-tertiary)]/30 hover:border-[var(--background)] hover:text-[var(--background)]"
+                                    : "text-[var(--color-quaternary)] opacity-60 hover:opacity-100 hover:text-[var(--color-secondary)] border-[var(--color-quaternary)]/20"
+                                }`}
                         >
                             {locale === "pt" ? "EN" : "PT"}
                         </button>
 
+                        {/* Link de Contato */}
                         <Link
                             href={`/${locale}/contact`}
-                            className="ml-2 px-6 py-2.5 bg-primary text-white rounded-full font-sans text-sm font-bold hover:bg-secondary hover:shadow-lg hover:shadow-secondary/20 transition-all active:scale-95"
+                            className={`ml-2 px-5 py-2 border rounded-full text-[10px] font-bold tracking-[0.15em] uppercase transition-all duration-300 active:scale-97 ${scrolled
+                                    ? "border-[var(--background)] text-[var(--background)] hover:bg-[var(--background)] hover:text-[var(--color-primary)]"
+                                    : "border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-[var(--background)]"
+                                }`}
                         >
                             {t("contact")}
                         </Link>
@@ -86,32 +120,33 @@ export default function Header() {
 
                     {/* MOBILE BURGER */}
                     <button
-                        className="md:hidden z-[90] p-2 text-primary focus:outline-none"
+                        className={`md:hidden z-[90] p-2 focus:outline-none transition-colors duration-300 ${scrolled ? "text-[var(--color-tertiary)]" : "text-[var(--color-primary)]"
+                            }`}
                         onClick={() => setMenuOpen(!menuOpen)}
                         aria-label="Toggle Menu"
                     >
-                        <div className="w-7 h-5 relative flex flex-col justify-between">
-                            <span className={`w-full h-0.5 bg-current transition-all duration-300 origin-left ${menuOpen ? "rotate-45 translate-x-1" : ""}`} />
-                            <span className={`w-full h-0.5 bg-current transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-                            <span className={`w-full h-0.5 bg-current transition-all duration-300 origin-left ${menuOpen ? "-rotate-45 translate-x-1" : ""}`} />
+                        <div className="w-6 h-4 relative flex flex-col justify-between">
+                            <span className={`w-full h-[1.5px] bg-current transition-all duration-300 origin-left ${menuOpen ? "rotate-45 translate-x-0.5" : ""}`} />
+                            <span className={`w-full h-[1.5px] bg-current transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+                            <span className={`w-full h-[1.5px] bg-current transition-all duration-300 origin-left ${menuOpen ? "-rotate-45 translate-x-0.5" : ""}`} />
                         </div>
                     </button>
                 </div>
             </Container>
 
-            {/* OVERLAY */}
+            {/* OVERLAY MOBILE */}
             <div
-                className={`fixed inset-0 bg-primary/20 backdrop-blur-sm z-[75] md:hidden transition-opacity duration-300 ${menuOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
+                className={`fixed inset-0 bg-[var(--color-primary)]/10 backdrop-blur-sm z-[75] md:hidden transition-opacity duration-300 ${menuOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
                 onClick={() => setMenuOpen(false)}
             />
 
             {/* SIDEBAR MOBILE */}
             <aside className={`
-                fixed top-0 right-0 h-screen w-[85%] max-w-sm bg-white z-[80] p-10 pt-32
-                transition-transform duration-500 ease-in-out md:hidden shadow-2xl
+                fixed top-0 right-0 h-screen w-[85%] max-w-sm bg-[var(--background)] border-l border-[var(--color-quaternary)]/10 z-[80] p-10 pt-32
+                transition-transform duration-500 ease-in-out md:hidden shadow-xl
                 ${menuOpen ? "translate-x-0" : "translate-x-full"}
             `}>
-                <nav className="flex flex-col gap-8 font-zilla text-3xl text-primary">
+                <nav className="flex flex-col gap-6 text-xl font-light tracking-tight text-[var(--color-primary)]">
                     {NAV_LINKS.map(({ href, label }) => {
                         const isActive = pathname === href;
                         return (
@@ -119,7 +154,7 @@ export default function Header() {
                                 key={href}
                                 href={href}
                                 onClick={() => setMenuOpen(false)}
-                                className={`transition-colors ${isActive ? "text-secondary font-bold" : "hover:text-secondary"}`}
+                                className={`transition-colors border-b border-[var(--color-quaternary)]/5 pb-2 ${isActive ? "text-[var(--color-secondary)] font-medium" : "hover:text-[var(--color-secondary)]"}`}
                             >
                                 {label}
                             </Link>
@@ -129,22 +164,22 @@ export default function Header() {
                     <Link
                         href={`/${locale}/contact`}
                         onClick={() => setMenuOpen(false)}
-                        className="mt-6 px-6 py-4 bg-primary text-white rounded-xl font-sans text-xl font-bold text-center active:scale-95 transition-transform"
+                        className="mt-4 px-6 py-3 bg-[var(--color-primary)] text-[var(--background)] rounded-xl text-sm font-bold tracking-wider text-center uppercase active:scale-95 transition-transform"
                     >
-                        {t("getInTouch")}
+                        {t("contact")}
                     </Link>
 
-                    {/* Language toggle mobile */}
+                    {/* Selector de idioma mobile */}
                     <button
                         onClick={() => { toggleLocale(); setMenuOpen(false); }}
-                        className="text-base font-bold text-primary hover:text-secondary transition-colors border border-slate-200 rounded-full px-4 py-2 w-fit"
+                        className="mt-4 text-xs font-bold tracking-widest uppercase text-[var(--color-quaternary)] border border-[var(--color-quaternary)]/20 rounded-full px-4 py-2 w-fit"
                     >
-                        {locale === "pt" ? "🇺🇸 English" : "🇧🇷 Português"}
+                        {locale === "pt" ? "🇺🇸 Switch to English" : "🇧🇷 Mudar para Português"}
                     </button>
                 </nav>
 
-                <p className="absolute bottom-12 left-10 text-xs text-slate-400 tracking-widest uppercase font-sans">
-                    © 2025 Débora
+                <p className="absolute bottom-12 left-10 text-[9px] font-bold tracking-widest text-[var(--color-quaternary)] opacity-40 uppercase">
+                    © 2026 Débora
                 </p>
             </aside>
         </header>

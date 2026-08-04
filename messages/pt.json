@@ -1,104 +1,128 @@
 {
     "nav": {
-        "home": "Home",
-        "about": "Sobre mim",
+        "home": "Início",
+        "about": "Sobre",
         "projects": "Projetos",
-        "contact": "Contato",
-        "getInTouch": "Fale comigo"
+        "contact": "Contato"
     },
     "hero": {
-        "title": "Oi, eu sou a ",
-        "name": "Débora!",
-        "searchPlaceholder1": "Procurando uma Frontend Developer...",
-        "searchPlaceholder2": "Procurando design minimalista...",
-        "searchPlaceholder3": "Procurando projetos em React & Next.js...",
-        "pressEnter": "Pressione enter para descobrir",
-        "downloadCV": "Baixar CV"
+        "titleLine1": "Código que",
+        "titleLine2": "conta",
+        "titleHighlight": "histórias",
+        "downloadCV": "Baixar CV",
+        "viewIndex": "Ver index de projetos",
+        "practiceEyebrow": "Prática e Pesquisa",
+        "practiceTitle": "Projetos de Prática",
+        "totiTitle": "Toti Plano de Saúde Pet",
+        "conversorTitle": "Conversor de Moedas",
+        "gameTitle": "Jogo Interativo HTML5"
     },
-    "projects": {
-        "selectedWork": "Trabalhos Selecionados",
-        "frontendTitle": "Desenvolvimento Frontend",
-        "creativeBackground": "Background Criativo",
-        "artDirectionTitle": "Direção de Arte",
-        "liveDemo": "Ver ao Vivo",
-        "sourceCode": "Código Fonte",
-        "noDeploy": "Sem deploy ainda",
-        "concept": "Conceito",
-        "artDirection": "Direção de Arte",
-        "viewFullProject": "Ver Projeto Completo",
-        "wantMore": "Quer ver mais?",
-        "behanceCta": "Explorar portfólio no Behance",
-        "toti": {
-            "subtitle": "Plano de Saúde Pet",
-            "description": "Uma landing page acolhedora e focada em conversão para uma marca de plano de saúde pet. Construída em torno da confiança e da conexão emocional — porque tutores não querem apenas cobertura, querem tranquilidade. Projetada e desenvolvida com uma identidade visual suave e um fluxo de navegação claro e intuitivo."
-        },
-        "verdant": {
-            "subtitle": "Loja de Plantas de Interior",
-            "description": "Uma landing page de e-commerce minimalista para uma marca de plantas de interior. Ancorada no espaço negativo e na tipografia editorial, a Verdant comunica calma, qualidade e um estilo de vida intencional. Cada detalhe — da paleta de cores às micro-interações — foi pensado para refletir a essência orgânica da marca."
-        },
-        "starbucks": {
-            "subtitle": "Prática de Desenvolvimento Frontend",
-            "description": "Uma recreação fiel ao pixel da página inicial da Starbucks, construída como um estudo de desenvolvimento frontend. Focado em precisão de layout, comportamento responsivo e estrutura de componentes — traduzindo um design polido e do mundo real em código limpo e de fácil manutenção."
-        },
-        "natura": {
-            "category": "Direção de Arte / Branding",
-            "concept": "Lançamento e Experiência de Marca para a linha de cuidados noturnos da Natura. O conceito criativo girou em torno da ideia de 'ritual de beleza noturno' — uma pausa consciente para cuidar de si mesmo. A identidade visual combinou elementos orgânicos e texturas suaves com uma paleta de cores que evocava calma e luxo acessível.",
-            "direction": "Para o lançamento da linha Tododia Todanoite, o desafio foi materializar o conceito do 'ritual do sono' em um ambiente físico. Como Diretora de Arte, liderei a criação de uma jornada visual baseada em ciclos, utilizando uma paleta de azuis profundos e iluminação circular para guiar a percepção do convidado."
-        },
-        "avon": {
-            "category": "Direção de Arte / Estratégia de Marca",
-            "concept": "Campanha anual da Avon voltada ao combate e conscientização sobre o câncer de mama. O conceito visual busca humanizar a causa através de uma estética acolhedora e informativa, utilizando o símbolo do laço rosa integrado a composições fotográficas que celebram o cuidado e a vida.",
-            "direction": "Como Diretora de Arte, liderei a concepção visual da 11ª edição do projeto. O desafio foi equilibrar a seriedade do tema com uma linguagem visual vibrante e empoderada. Desenvolvi o Key Visual focado na conexão real, utilizando tipografia sólida e elementos gráficos que guiam o público para o engajamento direto via QR Code."
-        }
-    },
-    "contact": {
-        "metaTitle": "Contato — Débora Meireles",
-        "metaDescription": "Entre em contato com Débora Meireles — Frontend Developer & Art Director.",
-        "eyebrow": "Fale comigo",
-        "title": "Vamos conversar.",
-        "subtitle": "Estou aberta a projetos, colaborações e oportunidades. Escolha o canal que preferir.",
-        "whatsapp": "Vamos conversar",
-        "linkedin": "Perfil profissional",
-        "email": "Me manda uma mensagem",
-        "github": "Veja meu código"
+    "journey": {
+        "title": "A Jornada",
+        "p1": "Como ex-Diretora de Arte, passei os últimos quatro anos moldando identidades visuais e liderando conceitos criativos para grandes marcas. Hoje, traduzo essa bagagem estética diretamente para o front-end.",
+        "p2": "Desenvolvo interfaces de alta performance com React e Next.js, unindo o rigor técnico da programação à sensibilidade de quem entende a importância de cada pixel, espaçamento e tipografia."
     },
     "about": {
-        "tagline": "4 anos criando marcas. Agora, criando o código por trás delas.",
+        "tagline": "Transformando conceitos estéticos em código de alta performance.",
         "english": "Inglês",
         "englishLevel": "Intermediário",
-        "downloadCV": "Download CV",
+        "downloadCV": "Baixar Currículo",
         "education": "Formação Acadêmica",
-        "inProgress": "CURSANDO",
+        "inProgress": "Cursando",
         "cs": {
             "title": "Ciência da Computação",
-            "school": "Descomplica Faculdade",
-            "period": "Jan de 2025 – Presente"
+            "school": "Faculdade Descomplica Uniamerica",
+            "period": "2025 – Presente"
         },
         "uxui": {
-            "title": "Pós-graduação Lato Sensu — Design de Produtos Digitais UX/UI",
-            "school": "UNOPAR — Universidade Norte do Paraná",
-            "period": "Fev de 2022 – Ago de 2022"
+            "title": "Especialização UX/UI Design",
+            "school": "UNOPAR",
+            "period": "2022"
         },
         "design": {
             "title": "Design Gráfico",
-            "school": "Universidade Paulista (UNIP)",
-            "period": "Ago de 2019 – Dez de 2021"
+            "school": "Universidade Paulista - UNIP",
+            "period": "2019 – 2021"
         },
         "experience": "Experiência Profissional",
         "artDir": {
-            "title": "Art Director & Graphic Designer",
-            "years": "4+ anos de experiência",
-            "description": "Direção de arte em campanhas e identidades visuais para marcas de grande porte — da conceituação ao material final."
+            "title": "Diretora de Arte / Creative Lead",
+            "years": "4 anos de experiência",
+            "description": "Liderança de conceitos criativos, direção de arte e identidades visuais para grandes marcas em agências de publicidade. Foco em estética refinada, consistência de marca e storytelling visual."
         },
-        "brands": "Marcas atendidas",
-        "frontend": {
-            "title": "Frontend Developer (Projetos)",
-            "period": "Atualmente",
-            "description": "Construção de interfaces com foco em performance, acessibilidade e consistência visual — do Figma ao deploy."
+        "brands": "Marcas Atendidas",
+        "practiceProjects": "Projetos de Prática",
+        "projects": {
+            "toti": {
+                "name": "Toti — Site de Planos de Saúde Pet",
+                "desc": "Site institucional multi-página com seções de Home, Sobre, Planos, FAQ e Contato, além de fluxo de assinatura com seleção de plano. Foco em roteamento, formulários e identidade visual coesa."
+            },
+            "verdante": {
+                "name": "Verdante — Landing Page",
+                "desc": "Landing page one-page para marca fictícia de plantas de interior, com carrossel de produtos e navegação por âncoras. Foco em design limpo e hierarquia visual."
+            },
+            "conversor": {
+                "name": "Conversor de Moedas",
+                "desc": "App mobile de conversão de moedas com integração a API de câmbio em tempo real. Inclui resolução de incompatibilidades de SDK e build de produção via EAS."
+            },
+            "game": {
+                "name": "Jogo Pixel Art",
+                "desc": "Jogo interativo de coleta com lógica de movimentação, colisão e condição de vitória, desenvolvido sem frameworks. Suporte a controle touch para mobile."
+            }
         },
         "stack": "Stack Técnica"
     },
-    "footer": {
-        "copyright": "© 2025 Débora"
+    "projects": {
+        "frontendTitle": "Front-end Lab",
+        "artDirectionTitle": "Direção de Arte & Lançamentos",
+        "selectedWork": "Trabalhos Selecionados",
+        "creativeBackground": "Bagagem Criativa",
+        "noDeploy": "Repositório",
+        "liveDemo": "Ver Projeto Online",
+        "sourceCode": "Código Fonte",
+        "concept": "Conceito",
+        "artDirection": "Direção de Arte",
+        "viewFullProject": "Ver Projeto Completo no Behance",
+        "wantMore": "Quer explorar mais projetos visuais?",
+        "behanceCta": "Acessar Behance Completo",
+        "toti": {
+            "subtitle": "Site Institucional & Plataforma Pet",
+            "description": "Site institucional multi-página com seções de Home, Sobre, Planos, FAQ e Contato, além de fluxo de assinatura com seleção de plano. Foco em roteamento, formulários e identidade visual coesa."
+        },
+        "conversor": {
+            "subtitle": "App Mobile de Câmbio em Tempo Real",
+            "description": "App mobile de conversão de moedas com integração a API de câmbio em tempo real. Inclui resolução de incompatividades de SDK e build de produção via EAS."
+        },
+        "verdant": {
+            "subtitle": "Landing Page Botânica",
+            "description": "Landing page one-page para marca de plantas de interior, com carrossel de produtos e navegação por âncoras. Foco em design limpo e hierarquia visual."
+        },
+        "game": {
+            "subtitle": "Jogo Interativo Canvas HTML5",
+            "description": "Jogo interativo de coleta com lógica de movimentação, colisão e condição de vitória, desenvolvido sem frameworks. Suporte a controle touch para mobile."
+        },
+        "starbucks": {
+            "subtitle": "Clone Responsivo da Interface",
+            "description": "Estudo de layout e responsividade reproduzindo a experiência de usuário e componentes da interface da Starbucks."
+        },
+        "natura": {
+            "category": "Press Kit & Lançamento de Produto",
+            "concept": "Criação de conceito e experiência física de unboxing para o lançamento da linha Tododia TodaNoite para a imprensa e influenciadores.",
+            "direction": "Desenvolvimento do guia visual, cenografia do evento de lançamento e direção de arte dos materiais editoriais."
+        },
+        "avon": {
+            "category": "Campanha Social & Identidade",
+            "concept": "Campanha de conscientização e engajamento para a 11ª edição do projeto Giro Pela Vida.",
+            "direction": "Desdobramento da identidade visual completa para ambientes digitais, impressos e ativações externas."
+        }
+    },
+    "contact": {
+        "eyebrow": "Contato",
+        "title": "Vamos buildar algo juntos?",
+        "subtitle": "Estou aberta a novas oportunidades, colaborações e desafios que unam design premium e engenharia de software.",
+        "email": "Enviar Email",
+        "linkedin": "Conectar no LinkedIn",
+        "whatsapp": "Mandar Mensagem no Whats",
+        "github": "Ver Código no GitHub"
     }
 }

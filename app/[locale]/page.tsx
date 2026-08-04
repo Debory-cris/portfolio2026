@@ -1,14 +1,15 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Footer from "@/components/Footer";
-import AboutMe from "./about/page";
-import { Footprints } from "lucide-react";
+import AboutPage from "./about/page";
+import ContactPage from "./contact/page";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <Hero />
+      <main className="w-full min-h-screen bg-[var(--background)]">
+        <Hero />
+      </main>
     </>
   );
 }

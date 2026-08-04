@@ -1,104 +1,128 @@
 {
     "nav": {
         "home": "Home",
-        "about": "About Me",
+        "about": "About",
         "projects": "Projects",
-        "contact": "Contact",
-        "getInTouch": "Get in Touch"
+        "contact": "Contact"
     },
     "hero": {
-        "title": "Hi, I'm ",
-        "name": "Débora!",
-        "searchPlaceholder1": "Search for a Frontend Developer...",
-        "searchPlaceholder2": "Search for minimalist web design...",
-        "searchPlaceholder3": "Search for React & Next.js projects...",
-        "pressEnter": "Press enter to discover",
-        "downloadCV": "Download CV"
+        "titleLine1": "Code that",
+        "titleLine2": "tells",
+        "titleHighlight": "stories",
+        "downloadCV": "Download Resume",
+        "viewIndex": "View project index",
+        "practiceEyebrow": "Practice & Research",
+        "practiceTitle": "Practice Projects",
+        "totiTitle": "Toti Pet Healthcare Site",
+        "conversorTitle": "Currency Converter App",
+        "gameTitle": "HTML5 Interactive Game"
     },
-    "projects": {
-        "selectedWork": "Selected Work",
-        "frontendTitle": "Frontend Development",
-        "creativeBackground": "Creative Background",
-        "artDirectionTitle": "Art Direction",
-        "liveDemo": "Live Demo",
-        "sourceCode": "Source Code",
-        "noDeploy": "No deploy yet",
-        "concept": "Concept",
-        "artDirection": "Art Direction",
-        "viewFullProject": "View Full Project",
-        "wantMore": "Want to see more?",
-        "behanceCta": "Explore portfolio on Behance",
-        "toti": {
-            "subtitle": "Pet Health Insurance",
-            "description": "A warm, conversion-focused landing page for a pet health insurance brand. Built around trust and emotional connection — because pet owners don't just want coverage, they want peace of mind. Designed and developed with a soft visual identity and a clear, intuitive navigation flow."
-        },
-        "verdant": {
-            "subtitle": "Indoor Plant Store",
-            "description": "A minimalist e-commerce landing page for an indoor plant brand. Anchored in negative space and editorial typography, Verdant communicates calm, quality, and intentional living. Every detail — from the color palette to the micro-interactions — was crafted to reflect the organic essence of the brand."
-        },
-        "starbucks": {
-            "subtitle": "Frontend Development Practice",
-            "description": "A pixel-faithful recreation of the Starbucks homepage, built as a frontend development study. Focused on layout precision, responsive behavior, and component structure — translating a polished, real-world design into clean, maintainable code."
-        },
-        "natura": {
-            "category": "Art Direction / Branding",
-            "concept": "Brand Launch and Experience for Natura's nighttime skincare line. The creative concept revolved around the idea of a 'nighttime beauty ritual' — a conscious pause for self-care. The visual identity combined organic elements and soft textures with a color palette evoking calm and accessible luxury.",
-            "direction": "For the Tododia Todanoite line launch, the challenge was to materialize the 'sleep ritual' concept in a physical environment. As Art Director, I led the creation of a cycle-based visual journey, using a palette of deep blues and circular lighting to guide the guest's perception."
-        },
-        "avon": {
-            "category": "Art Direction / Brand Strategy",
-            "concept": "Avon's annual campaign focused on breast cancer awareness and prevention. The visual concept seeks to humanize the cause through a welcoming and informative aesthetic, using the pink ribbon symbol integrated into photographic compositions that celebrate care and life.",
-            "direction": "As Art Director, I led the visual concept for the 11th edition of the project. The challenge was to balance the seriousness of the topic with a vibrant, empowering visual language. I developed the Key Visual focused on real connection, using solid typography and graphic elements that guide the audience toward direct engagement via QR Code."
-        }
-    },
-    "contact": {
-        "metaTitle": "Contact — Débora Meireles",
-        "metaDescription": "Get in touch with Débora Meireles — Frontend Developer & Art Director.",
-        "eyebrow": "Get in Touch",
-        "title": "Let's talk.",
-        "subtitle": "I'm open to projects, collaborations, and opportunities. Choose your preferred channel.",
-        "whatsapp": "Let's chat",
-        "linkedin": "Professional profile",
-        "email": "Send me a message",
-        "github": "See my code"
+    "journey": {
+        "title": "The Journey",
+        "p1": "As a former Art Director, I spent the last four years shaping visual identities and leading creative concepts for major brands. Today, I translate that aesthetic background directly into frontend engineering.",
+        "p2": "I develop high-performance interfaces with React and Next.js, combining technical programming rigor with the sensitivity of someone who understands the importance of every pixel, spacing, and typography."
     },
     "about": {
-        "tagline": "4 years building brands. Now, building the code behind them.",
+        "tagline": "Translating aesthetic concepts into high-performance code.",
         "english": "English",
         "englishLevel": "Intermediate",
-        "downloadCV": "Download CV",
+        "downloadCV": "Download Resume",
         "education": "Education",
-        "inProgress": "IN PROGRESS",
+        "inProgress": "In Progress",
         "cs": {
             "title": "Computer Science",
-            "school": "Descomplica College",
-            "period": "Jan 2025 – Present"
+            "school": "Faculdade Descomplica Uniamerica",
+            "period": "2025 – Present"
         },
         "uxui": {
-            "title": "Postgraduate — Digital Product Design UX/UI",
-            "school": "UNOPAR — Universidade Norte do Paraná",
-            "period": "Feb 2022 – Aug 2022"
+            "title": "UX/UI Design Specialization",
+            "school": "UNOPAR",
+            "period": "2022"
         },
         "design": {
             "title": "Graphic Design",
-            "school": "Universidade Paulista (UNIP)",
-            "period": "Aug 2019 – Dec 2021"
+            "school": "Universidade Paulista - UNIP",
+            "period": "2019 – 2021"
         },
         "experience": "Professional Experience",
         "artDir": {
-            "title": "Art Director & Graphic Designer",
-            "years": "4+ years of experience",
-            "description": "Art direction for campaigns and visual identities for major brands — from concept to final deliverable."
+            "title": "Art Director / Creative Lead",
+            "years": "4 years of experience",
+            "description": "Leading creative concepts, art direction, and visual identities for major brands at advertising agencies. Focus on refined aesthetics, brand consistency, and visual storytelling."
         },
-        "brands": "Brands served",
-        "frontend": {
-            "title": "Frontend Developer (Projects)",
-            "period": "Currently",
-            "description": "Building interfaces focused on performance, accessibility, and visual consistency — from Figma to deploy."
+        "brands": "Key Brands",
+        "practiceProjects": "Practice Projects",
+        "projects": {
+            "toti": {
+                "name": "Toti — Pet Healthcare Plan Site",
+                "desc": "Multi-page institutional website featuring Home, About, Plans, FAQ, and Contact sections, as well as a subscription flow with plan selection. Focused on routing, forms, and cohesive visual identity."
+            },
+            "verdante": {
+                "name": "Verdante — Landing Page",
+                "desc": "One-page landing page for a fictional indoor plant brand, featuring a product carousel and anchor navigation. Focused on clean design and visual hierarchy."
+            },
+            "conversor": {
+                "name": "Currency Converter App",
+                "desc": "Mobile currency conversion app with real-time exchange rate API integration. Includes SDK incompatibility resolutions and EAS production build."
+            },
+            "game": {
+                "name": "Pixel Art Game",
+                "desc": "Interactive collection game with movement logic, collision, and victory conditions, built without frameworks. Features touch control support for mobile."
+            }
         },
         "stack": "Tech Stack"
     },
-    "footer": {
-        "copyright": "© 2025 Débora"
+    "projects": {
+        "frontendTitle": "Front-end Lab",
+        "artDirectionTitle": "Art Direction & Launches",
+        "selectedWork": "Selected Work",
+        "creativeBackground": "Creative Background",
+        "noDeploy": "Repository",
+        "liveDemo": "Live Demo",
+        "sourceCode": "Source Code",
+        "concept": "Concept",
+        "artDirection": "Art Direction",
+        "viewFullProject": "View Full Project on Behance",
+        "wantMore": "Want to explore more visual projects?",
+        "behanceCta": "Access Full Behance",
+        "toti": {
+            "subtitle": "Institutional Site & Pet Platform",
+            "description": "Multi-page institutional website featuring Home, About, Plans, FAQ, and Contact sections, as well as a subscription flow with plan selection. Focused on routing, forms, and cohesive visual identity."
+        },
+        "conversor": {
+            "subtitle": "Real-Time Exchange Mobile App",
+            "description": "Mobile currency conversion app with real-time exchange rate API integration. Includes SDK incompatibility resolutions and EAS production build."
+        },
+        "verdant": {
+            "subtitle": "Botanical Landing Page",
+            "description": "One-page landing page for an indoor plant brand, featuring a product carousel and anchor navigation. Focused on clean design and visual hierarchy."
+        },
+        "game": {
+            "subtitle": "HTML5 Canvas Interactive Game",
+            "description": "Interactive collection game with movement logic, collision, and victory conditions, built without frameworks. Features touch control support for mobile."
+        },
+        "starbucks": {
+            "subtitle": "Responsive Interface Clone",
+            "description": "Layout and responsiveness study replicating Starbucks' user experience and UI components."
+        },
+        "natura": {
+            "category": "Press Kit & Product Launch",
+            "concept": "Concept creation and physical unboxing experience for the press and influencer launch of the Tododia TodaNoite line.",
+            "direction": "Visual guide development, launch event set design, and art direction for editorial collateral."
+        },
+        "avon": {
+            "category": "Social Campaign & Identity",
+            "concept": "Awareness and engagement campaign for the 11th edition of the Giro Pela Vida project.",
+            "direction": "Complete visual identity rollout across digital environments, print, and outdoor activations."
+        }
+    },
+    "contact": {
+        "eyebrow": "Contact",
+        "title": "Let's build something together?",
+        "subtitle": "I am open to new opportunities, collaborations, and challenges that combine premium design and software engineering.",
+        "email": "Send Email",
+        "linkedin": "Connect on LinkedIn",
+        "whatsapp": "Message on WhatsApp",
+        "github": "View Code on GitHub"
     }
 }
