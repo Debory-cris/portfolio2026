@@ -23,13 +23,13 @@
 }
 
 :root {
-  --primary: #4b0113;
-  --secondary: #810220;
-  --tertiary: #e4bdab;
-  --quaternary: #292828;
+  --primary: #400b55;
+  --secondary: #ce337e;
+  --tertiary: #cbe054;
+  --quaternary: #5c5c5c;
 
-  --background: #fcf6ef;
-  --foreground: #530131;
+  --background: #FFFDF7;
+  --foreground: #310641;
 }
 
 body {

@@ -138,7 +138,7 @@ export default function Hero() {
                 <Container className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-16">
                     <div className="overflow-hidden mb-12">
                         <span className="inline-block text-[10px] font-bold tracking-[0.35em] uppercase text-[var(--color-secondary)] dynamic-reveal">
-                            ✦ Creative Engineering Portfolio — 2026
+                            ✦ Portfolio — 2026
                         </span>
                     </div>
 
@@ -149,7 +149,7 @@ export default function Hero() {
 
                             <span className="font-sans font-light text-[0.35em] tracking-tighter text-[var(--color-tertiary)] inline-flex items-center align-middle relative -top-3 md:-top-6 bg-[var(--color-quaternary)]/5 px-3 py-1 rounded-xl border border-[var(--color-tertiary)]/20">
                                 <span>{"{"}</span>
-                                <span className="dev-typewriter mx-1.5 font-mono text-[0.65em] font-medium tracking-normal text-[var(--color-secondary)]"></span>
+                                <span className="dev-typewriter mx-1.5 font-mono text-[1.2em] font-medium tracking-normal text-[var(--color-secondary)]"></span>
                                 <span>{"}"}</span>
                             </span>
                         </h1>
@@ -225,7 +225,7 @@ export default function Hero() {
                         </h2>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 items-start">
+                    <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-1 items-start">
                         <div className="w-full aspect-[4/4] sm:max-w-[280px] rounded-2xl overflow-hidden bg-[var(--color-quaternary)]/5 border border-[var(--color-tertiary)]/10 shadow-[0_20px_40px_rgba(0,0,0,0.15)] mx-auto md:mx-0">
                             <img
                                 src="/perfil2.png"

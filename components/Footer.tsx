@@ -26,7 +26,7 @@ export default function Footer() {
                     © {new Date().getFullYear()} Débora Cristina Meireles
                 </p>
 
-                <Image src="/iconfooter.png" alt="Logo" width={60} height={20} />
+                <Image src="/iconfooter2.png" alt="Logo" width={70} height={20} />
 
                 {/* Nav links */}
                 <nav className="flex items-center gap-6 font-sans">
