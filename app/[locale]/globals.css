@@ -1,16 +1,5 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: 'Kudry Weird';
-  src: url('/font/kudry_weird-headline.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@theme {
-  --font-custom: 'Kudry Weird', serif;
-}
 
 @theme {
 
@@ -25,7 +14,7 @@
 :root {
   --primary: #400b55;
   --secondary: #ce337e;
-  --tertiary: #cbe054;
+  --tertiary: #48f8ef;
   --quaternary: #5c5c5c;
 
   --background: #FFFDF7;

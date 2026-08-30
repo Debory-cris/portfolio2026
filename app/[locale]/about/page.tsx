@@ -53,24 +53,26 @@ export default function AboutMe() {
             <div className="max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-16 items-start">
 
                 {/* ── COLUNA DA ESQUERDA: PERFIL EDITORIAL (STICKY) ────────────────── */}
-                <div className="md:sticky md:top-12 flex flex-col items-start w-full">
+                <div className="relative md:sticky md:top-12 flex flex-col items-start w-full">
 
                     {/* Imagem de Perfil com Borda de Destaque */}
-                    <div className="w-full aspect-[4/5] sm:max-w-[280px] rounded-2xl overflow-hidden mb-8 bg-[var(--color-quaternary)]/10 border border-[var(--color-quaternary)]/20 shadow-[0_20px_40px_rgba(0,0,0,0.06)]">
+                    <div className="absolute -left-12 bottom-8 w-28 h-28 rounded-full bg-fuchsia-300/40 -z-10" />
+
+                    <div className="w-full aspect-[4/5] sm:max-w-[280px] rounded-2xl overflow-hidden mb-8 bg-[var(--color-quaternary)]/10 border border-[var(--color-quaternary)]/20 rounded-[50%_50%_50%_45%] shadow-[0_20px_40px_rgba(0,0,0,0.06)]">
                         <img
                             src="/perfil.png"
-                            alt="Débora Cristina Meireles"
+                            alt={t("portraitAlt")}
                             className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                         />
                     </div>
 
                     {/* Nome em Sans-serif Robusta */}
-                    <h1 className="font-sans text-2xl md:text-3xl font-bold tracking-tight text-[var(--color-primary)] mb-1">
+                    <h2 className="font-sans text-2xl md:text-3xl font-bold tracking-tight text-[var(--color-primary)] mb-1">
                         Débora Cristina Meireles
-                    </h1>
+                    </h2>
 
                     <p className="text-[11px] font-bold tracking-[0.25em] uppercase text-[var(--color-secondary)] mb-6">
-                        Frontend Developer
+                        {t("roleLabel")}
                     </p>
 
                     <p className="text-sm text-[var(--color-primary)] opacity-90 leading-relaxed font-normal mb-8 max-w-sm">
@@ -104,7 +106,7 @@ export default function AboutMe() {
                     <div>
                         <div className="flex items-baseline gap-4 border-b border-[var(--color-quaternary)]/20 pb-4 mb-8">
                             <span className="font-mono text-xs font-bold text-[var(--color-secondary)]">01 //</span>
-                            <h2 className="font-normal text-2xl md:text-2xl font-normal text-[var(--color-primary)]">{t("education")}</h2>
+                            <h3 className="font-normal text-2xl md:text-2xl font-normal text-[var(--color-primary)]">{t("education")}</h3>
                         </div>
 
                         <div className="flex flex-col gap-5">
@@ -113,7 +115,7 @@ export default function AboutMe() {
                                 <div className="absolute left-0 top-0 w-1.5 h-full bg-[var(--color-secondary)] rounded-l-2xl" />
                                 <div className="flex justify-between items-start gap-4">
                                     <div>
-                                        <h3 className="font-sans text-base font-bold tracking-tight text-[var(--color-primary)]">{t("cs.title")}</h3>
+                                        <h4 className="font-sans text-base font-bold tracking-tight text-[var(--color-primary)]">{t("cs.title")}</h4>
                                         <p className="text-xs font-semibold text-[var(--color-secondary)] mt-1">{t("cs.school")}</p>
                                     </div>
                                     <span className="text-[9px] font-bold tracking-widest uppercase bg-[var(--color-secondary)] text-[var(--background)] px-3 py-1 rounded-full shadow-sm shrink-0">
@@ -125,14 +127,14 @@ export default function AboutMe() {
 
                             {/* Card 2 */}
                             <div className="p-6 rounded-2xl border border-[var(--color-quaternary)]/20 bg-[var(--color-quaternary)]/5 hover:border-[var(--color-quaternary)]/40 hover:bg-[var(--color-quaternary)]/10 transition-all">
-                                <h3 className="font-sans text-base font-bold tracking-tight text-[var(--color-primary)]">{t("uxui.title")}</h3>
+                                <h4 className="font-sans text-base font-bold tracking-tight text-[var(--color-primary)]">{t("uxui.title")}</h4>
                                 <p className="text-xs font-semibold text-[var(--color-secondary)] mt-1">{t("uxui.school")}</p>
                                 <p className="text-[11px] font-semibold text-[var(--color-primary)] opacity-70 mt-3 font-mono">{t("uxui.period")}</p>
                             </div>
 
                             {/* Card 3 */}
                             <div className="p-6 rounded-2xl border border-[var(--color-quaternary)]/20 bg-[var(--color-quaternary)]/5 hover:border-[var(--color-quaternary)]/40 hover:bg-[var(--color-quaternary)]/10 transition-all">
-                                <h3 className="font-sans text-base font-bold tracking-tight text-[var(--color-primary)]">{t("design.title")}</h3>
+                                <h4 className="font-sans text-base font-bold tracking-tight text-[var(--color-primary)]">{t("design.title")}</h4>
                                 <p className="text-xs font-semibold text-[var(--color-secondary)] mt-1">{t("design.school")}</p>
                                 <p className="text-[11px] font-semibold text-[var(--color-primary)] opacity-70 mt-3 font-mono">{t("design.period")}</p>
                             </div>
@@ -143,12 +145,12 @@ export default function AboutMe() {
                     <div>
                         <div className="flex items-baseline gap-4 border-b border-[var(--color-quaternary)]/20 pb-4 mb-8">
                             <span className="font-mono text-xs font-bold text-[var(--color-secondary)]">02 //</span>
-                            <h2 className="font-normal text-2xl md:text-2xl font-normal text-[var(--color-primary)]">{t("experience")}</h2>
+                            <h3 className="font-normal text-2xl md:text-2xl font-normal text-[var(--color-primary)]">{t("experience")}</h3>
                         </div>
 
                         <div className="relative pl-6 border-l-2 border-[var(--color-secondary)]">
                             <div className="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-[var(--color-secondary)] shadow-[0_0_10px_rgba(0,0,0,0.15)]" />
-                            <h3 className="font-sans text-lg font-bold tracking-tight text-[var(--color-primary)]">{t("artDir.title")}</h3>
+                            <h4 className="font-sans text-lg font-bold tracking-tight text-[var(--color-primary)]">{t("artDir.title")}</h4>
                             <p className="text-xs font-bold text-[var(--color-secondary)] tracking-widest uppercase mt-1">{t("artDir.years")}</p>
 
                             <p className="mt-4 text-sm text-[var(--color-primary)] opacity-90 leading-relaxed font-normal max-w-2xl">
@@ -174,7 +176,7 @@ export default function AboutMe() {
                     <div>
                         <div className="flex items-baseline gap-4 border-b border-[var(--color-quaternary)]/20 pb-4 mb-8">
                             <span className="font-mono text-xs font-bold text-[var(--color-secondary)]">03 //</span>
-                            <h2 className="font-normal text-2xl md:text-2xl font-normal text-[var(--color-primary)]">{t("practiceProjects")}</h2>
+                            <h3 className="font-normal text-2xl md:text-2xl font-normal text-[var(--color-primary)]">{t("practiceProjects")}</h3>
                         </div>
 
                         <div className="grid grid-cols-1 gap-4">
@@ -187,9 +189,9 @@ export default function AboutMe() {
                                     className="group p-6 rounded-2xl border border-[var(--color-quaternary)]/20 bg-[var(--color-quaternary)]/5 hover:border-[var(--color-secondary)] hover:bg-[var(--color-quaternary)]/10 transition-all duration-300 relative shadow-xs"
                                 >
                                     <div className="flex justify-between items-baseline gap-4">
-                                        <h3 className="font-sans text-base font-bold tracking-tight text-[var(--color-primary)] group-hover:text-[var(--color-secondary)] transition-colors">
+                                        <h4 className="font-sans text-base font-bold tracking-tight text-[var(--color-primary)] group-hover:text-[var(--color-secondary)] transition-colors">
                                             {t(project.nameKey)}
-                                        </h3>
+                                        </h4>
                                         <ArrowUpRight size={18} className="text-[var(--color-secondary)] opacity-40 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all shrink-0" />
                                     </div>
                                     <p className="text-[10px] font-bold tracking-widest uppercase text-[var(--color-secondary)] mt-1 mb-3">{project.stack}</p>
@@ -203,7 +205,7 @@ export default function AboutMe() {
                     <div>
                         <div className="flex items-baseline gap-4 border-b border-[var(--color-quaternary)]/20 pb-4 mb-8">
                             <span className="font-mono text-xs font-bold text-[var(--color-secondary)]">04 //</span>
-                            <h2 className="font-normal text-2xl md:text-2xl font-normal text-[var(--color-primary)]">{t("stack")}</h2>
+                            <h3 className="font-normal text-2xl md:text-2xl font-normal text-[var(--color-primary)]">{t("stack")}</h3>
                         </div>
 
                         <div className="flex flex-wrap gap-2.5">

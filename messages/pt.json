@@ -6,16 +6,24 @@
         "contact": "Contato"
     },
     "hero": {
-        "titleLine1": "Código que",
-        "titleLine2": "conta",
-        "titleHighlight": "histórias",
+        "titleLine1": "Hey, ",
+        "titleLine2": "eu sou a",
+        "titleHighlight": "Débora",
         "downloadCV": "Baixar CV",
         "viewIndex": "Ver index de projetos",
         "practiceEyebrow": "Prática e Pesquisa",
         "practiceTitle": "Projetos de Prática",
         "totiTitle": "Toti Plano de Saúde Pet",
         "conversorTitle": "Conversor de Moedas",
-        "gameTitle": "Jogo Interativo HTML5"
+        "gameTitle": "Jogo Interativo HTML5",
+        "roleLabel": "Front-end Developer",
+        "bio": "Art Director em transição para Front-end, unindo direção visual, UI Design e código para criar experiências digitais.",
+        "portraitAlt": "Retrato de Débora Meireles",
+        "metricYearsLabel": "anos criando",
+        "metricUILabel": "design & direção visual",
+        "metricCodeLabel": "React · Next.js · TypeScript",
+        "location": "São Paulo · Brasil",
+        "tagline": "Design × Code"
     },
     "journey": {
         "title": "A Jornada",
@@ -24,6 +32,8 @@
     },
     "about": {
         "tagline": "Transformando conceitos estéticos em código de alta performance.",
+        "roleLabel": "Frontend Developer",
+        "portraitAlt": "Retrato de Débora Meireles",
         "english": "Inglês",
         "englishLevel": "Intermediário",
         "downloadCV": "Baixar Currículo",
@@ -85,23 +95,29 @@
         "viewFullProject": "Ver Projeto Completo no Behance",
         "wantMore": "Quer explorar mais projetos visuais?",
         "behanceCta": "Acessar Behance Completo",
+        "closeModal": "Fechar modal",
         "toti": {
+            "title": "Toti",
             "subtitle": "Site Institucional & Plataforma Pet",
             "description": "Site institucional multi-página com seções de Home, Sobre, Planos, FAQ e Contato, além de fluxo de assinatura com seleção de plano. Foco em roteamento, formulários e identidade visual coesa."
         },
         "conversor": {
+            "title": "Conversor de Moedas",
             "subtitle": "App Mobile de Câmbio em Tempo Real",
             "description": "App mobile de conversão de moedas com integração a API de câmbio em tempo real. Inclui resolução de incompatividades de SDK e build de produção via EAS."
         },
         "verdant": {
+            "title": "Verdant",
             "subtitle": "Landing Page Botânica",
             "description": "Landing page one-page para marca de plantas de interior, com carrossel de produtos e navegação por âncoras. Foco em design limpo e hierarquia visual."
         },
         "game": {
+            "title": "Projeto de Jogo",
             "subtitle": "Jogo Interativo Canvas HTML5",
             "description": "Jogo interativo de coleta com lógica de movimentação, colisão e condição de vitória, desenvolvido sem frameworks. Suporte a controle touch para mobile."
         },
         "starbucks": {
+            "title": "Clone Starbucks",
             "subtitle": "Clone Responsivo da Interface",
             "description": "Estudo de layout e responsividade reproduzindo a experiência de usuário e componentes da interface da Starbucks."
         },
@@ -123,6 +139,9 @@
         "email": "Enviar Email",
         "linkedin": "Conectar no LinkedIn",
         "whatsapp": "Mandar Mensagem no Whats",
-        "github": "Ver Código no GitHub"
+        "github": "Ver Código no GitHub",
+        "footerCopyright": "© 2026 DÉBORA MEIRELES",
+        "footerLocation": "SÃO PAULO, BRASIL",
+        "footerCredit": "DESIGNED & CODED BY ME"
     }
 }

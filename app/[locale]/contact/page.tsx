@@ -72,7 +72,7 @@ export default function Contact() {
                             <ArrowUpRight size={20} className="text-[var(--color-tertiary)] opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-[0.16,1,0.3,1]" />
                         </a>
 
-                        {/* Canal: WhatsApp (Nativo) */}
+                        {/* Canal: WhatsApp (Nativo) — TODO: troque "seu-numero" pelo número real, formato 55DDDNÚMERO (só dígitos, sem +) */}
                         <a
                             href="https://wa.me/seu-numero"
                             target="_blank"
@@ -113,9 +113,9 @@ export default function Contact() {
                     </div>
 
                     <div className="mt-32 flex flex-col sm:flex-row justify-between items-center text-[10px] font-bold tracking-widest uppercase text-[var(--color-quaternary)] opacity-40 gap-4">
-                        <span>© 2026 DÉBORA MEIRELES</span>
-                        <span>SÃO PAULO, BRASIL</span>
-                        <span>DESIGNED & CODED BY ME</span>
+                        <span>{t("footerCopyright")}</span>
+                        <span>{t("footerLocation")}</span>
+                        <span>{t("footerCredit")}</span>
                     </div>
                 </div>
             </div>

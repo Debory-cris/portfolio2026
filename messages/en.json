@@ -6,16 +6,24 @@
         "contact": "Contact"
     },
     "hero": {
-        "titleLine1": "Code that",
-        "titleLine2": "tells",
-        "titleHighlight": "stories",
+        "titleLine1": "Hi,",
+        "titleLine2": "I'm",
+        "titleHighlight": "Débora",
         "downloadCV": "Download Resume",
         "viewIndex": "View project index",
         "practiceEyebrow": "Practice & Research",
         "practiceTitle": "Practice Projects",
         "totiTitle": "Toti Pet Healthcare Site",
         "conversorTitle": "Currency Converter App",
-        "gameTitle": "HTML5 Interactive Game"
+        "gameTitle": "HTML5 Interactive Game",
+        "roleLabel": "Front-end Developer",
+        "bio": "Art Director transitioning into Front-end, combining visual direction, UI Design, and code to build digital experiences.",
+        "portraitAlt": "Portrait of Débora Meireles",
+        "metricYearsLabel": "years creating",
+        "metricUILabel": "design & visual direction",
+        "metricCodeLabel": "React · Next.js · TypeScript",
+        "location": "São Paulo · Brazil",
+        "tagline": "Design × Code"
     },
     "journey": {
         "title": "The Journey",
@@ -24,6 +32,8 @@
     },
     "about": {
         "tagline": "Translating aesthetic concepts into high-performance code.",
+        "roleLabel": "Frontend Developer",
+        "portraitAlt": "Portrait of Débora Meireles",
         "english": "English",
         "englishLevel": "Intermediate",
         "downloadCV": "Download Resume",
@@ -85,23 +95,29 @@
         "viewFullProject": "View Full Project on Behance",
         "wantMore": "Want to explore more visual projects?",
         "behanceCta": "Access Full Behance",
+        "closeModal": "Close modal",
         "toti": {
+            "title": "Toti",
             "subtitle": "Institutional Site & Pet Platform",
             "description": "Multi-page institutional website featuring Home, About, Plans, FAQ, and Contact sections, as well as a subscription flow with plan selection. Focused on routing, forms, and cohesive visual identity."
         },
         "conversor": {
+            "title": "Currency Converter",
             "subtitle": "Real-Time Exchange Mobile App",
             "description": "Mobile currency conversion app with real-time exchange rate API integration. Includes SDK incompatibility resolutions and EAS production build."
         },
         "verdant": {
+            "title": "Verdant",
             "subtitle": "Botanical Landing Page",
             "description": "One-page landing page for an indoor plant brand, featuring a product carousel and anchor navigation. Focused on clean design and visual hierarchy."
         },
         "game": {
+            "title": "Game Project",
             "subtitle": "HTML5 Canvas Interactive Game",
             "description": "Interactive collection game with movement logic, collision, and victory conditions, built without frameworks. Features touch control support for mobile."
         },
         "starbucks": {
+            "title": "Starbucks Clone",
             "subtitle": "Responsive Interface Clone",
             "description": "Layout and responsiveness study replicating Starbucks' user experience and UI components."
         },
@@ -123,6 +139,9 @@
         "email": "Send Email",
         "linkedin": "Connect on LinkedIn",
         "whatsapp": "Message on WhatsApp",
-        "github": "View Code on GitHub"
+        "github": "View Code on GitHub",
+        "footerCopyright": "© 2026 DÉBORA MEIRELES",
+        "footerLocation": "SÃO PAULO, BRAZIL",
+        "footerCredit": "DESIGNED & CODED BY ME"
     }
 }

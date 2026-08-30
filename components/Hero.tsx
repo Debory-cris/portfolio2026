@@ -3,6 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import Container from "./Container";
 import { Download, ArrowUpRight } from "lucide-react";
 
@@ -67,12 +68,16 @@ export default function Hero() {
             isInside = true;
             butterfly.style.opacity = "0.75";
             butterfly.style.transform = "translate(-50%, -50%) scale(1)";
+            // Cursor nativo só some depois que a borboleta assume — nunca
+            // ficamos sem cursor visível caso o JS demore a montar.
+            hero.style.cursor = "none";
         };
 
         const onMouseLeave = () => {
             isInside = false;
             butterfly.style.opacity = "0";
             butterfly.style.transform = "translate(-50%, -50%) scale(0.4)";
+            hero.style.cursor = "auto";
         };
 
         const tick = () => {
@@ -109,16 +114,22 @@ export default function Hero() {
             {/* ── Hero Banner Editorial ─────────────────────────────────────────────── */}
             <section
                 ref={heroRef}
-                className="relative w-full min-h-[70vh] flex items-center overflow-hidden bg-[var(--background)] pt-24 pb-16 cursor-none"
+                className="relative w-full min-h-screen flex items-center overflow-hidden bg-[var(--background)]"
             >
+                {/* Borboleta que acompanha o mouse — decorativa, fora da árvore de acessibilidade */}
                 <div
                     ref={butterflyRef}
-                    className="absolute pointer-events-none z-30 opacity-0 transition-opacity transition-transform duration-500 will-change-transform mix-blend-multiply"
-                    style={{ left: 0, top: 0, transform: "translate(-50%, -50%) scale(0.5)" }}
+                    aria-hidden="true"
+                    className="absolute pointer-events-none z-50 opacity-0 transition-opacity duration-500 will-change-transform mix-blend-multiply"
+                    style={{
+                        left: 0,
+                        top: 0,
+                        transform: "translate(-50%, -50%) scale(0.5)",
+                    }}
                 >
                     <svg
-                        width="32"
-                        height="32"
+                        width="34"
+                        height="34"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="var(--color-secondary)"
@@ -135,86 +146,197 @@ export default function Hero() {
                     </svg>
                 </div>
 
-                <Container className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-16">
-                    <div className="overflow-hidden mb-12">
-                        <span className="inline-block text-[10px] font-bold tracking-[0.35em] uppercase text-[var(--color-secondary)] dynamic-reveal">
+                <Container className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+
+                    {/* Pequeno marcador superior */}
+                    <div className="absolute top-0 left-6 md:left-12 lg:left-16">
+                        <span className="text-[9px] font-bold tracking-[0.35em] uppercase text-[var(--color-secondary)]">
                             ✦ Portfolio — 2026
                         </span>
                     </div>
 
-                    <div className="max-w-6xl mb-16 dynamic-reveal-delayed">
-                        <h1 className="font-custom font-normal text-5xl sm:text-7xl md:text-8xl lg:text-[105px] leading-[0.95] tracking-tight text-[var(--color-primary)]">
-                            {t("titleLine1")}<br />
-                            {t("titleLine2")} <span className="italic font-light text-[var(--color-secondary)] tracking-normal">{t("titleHighlight")}</span> <br />
+                    {/* COMPOSIÇÃO PRINCIPAL */}
+                    <div className="relative min-h-[700px] flex items-center">
 
-                            <span className="font-sans font-light text-[0.35em] tracking-tighter text-[var(--color-tertiary)] inline-flex items-center align-middle relative -top-3 md:-top-6 bg-[var(--color-quaternary)]/5 px-3 py-1 rounded-xl border border-[var(--color-tertiary)]/20">
-                                <span>{"{"}</span>
-                                <span className="dev-typewriter mx-1.5 font-mono text-[1.2em] font-medium tracking-normal text-[var(--color-secondary)]"></span>
-                                <span>{"}"}</span>
+                        {/* Elementos decorativos */}
+                        <div className="absolute left-[31%] top-[27%] w-24 h-24 md:w-32 md:h-32 rounded-full bg-[var(--color-secondary)]/20 blur-[1px]" />
+
+                        <div className="absolute left-[47%] top-[22%] w-28 h-28 md:w-36 md:h-36 rounded-full bg-[#8FD3FF]/50" />
+
+                        {/* COLUNA ESQUERDA */}
+                        <div className="relative z-20 w-full md:w-[38%] pt-20 md:pt-0">
+
+                            <div className="overflow-hidden mb-8">
+                                <span className="inline-flex items-center gap-3 text-[10px] font-bold tracking-[0.3em] uppercase text-[var(--color-primary)] dynamic-reveal">
+                                    <span className="block w-8 h-px bg-[var(--color-secondary)]" />
+                                    {t("roleLabel")}
+                                </span>
+                            </div>
+
+                            <div className="dynamic-reveal-delayed">
+                                <h1 className="font-custom font-normal text-6xl sm:text-7xl lg:text-[86px] leading-[0.88] tracking-[-0.04em] text-[var(--color-primary)]">
+                                    {t("titleLine1")} {t("titleLine2")}
+                                </h1>
+
+                                <h2 className="font-custom italic font-light text-6xl sm:text-7xl lg:text-[86px] leading-[0.9] tracking-[-0.04em] text-[var(--color-secondary)]">
+                                    {t("titleHighlight")}
+                                </h2>
+                            </div>
+
+                            <div className="mt-8 max-w-xs dynamic-reveal-delayed-more">
+                                <p className="text-xs md:text-sm leading-relaxed text-[var(--color-primary)]/60">
+                                    {t("bio")}
+                                </p>
+                            </div>
+
+                            <div className="mt-10 flex items-center gap-6 dynamic-reveal-delayed-more">
+
+                                <a
+                                    href="/curriculo-debora-meireles.pdf"
+                                    download
+                                    className="group inline-flex items-center gap-3 text-[10px] font-bold tracking-[0.2em] uppercase text-[var(--color-primary)]"
+                                >
+                                    <span className="flex items-center justify-center w-9 h-9 rounded-full border border-[var(--color-primary)]/20 group-hover:bg-[var(--color-primary)] group-hover:text-[var(--background)] transition-all duration-300">
+                                        <Download size={14} />
+                                    </span>
+
+                                    {t("downloadCV")}
+                                </a>
+
+                                <Link
+                                    href={`/${locale}/projects`}
+                                    className="text-[10px] font-bold tracking-[0.2em] uppercase text-[var(--color-secondary)] hover:text-[var(--color-primary)] transition-colors"
+                                >
+                                    {t("viewIndex")} ↗
+                                </Link>
+
+                            </div>
+                        </div>
+
+
+                        {/* FOTO CENTRAL */}
+                        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[46%] z-10">
+
+                            <div className="relative">
+
+                                {/* círculos decorativos */}
+                                <div className="absolute -left-12 bottom-8 w-28 h-28 rounded-full bg-fuchsia-300/40 -z-10" />
+
+                                <div className="absolute -right-8 top-8 w-32 h-32 rounded-full bg-sky-300/50 -z-10" />
+
+                                {/* foto */}
+                                <div className="relative w-[280px] h-[360px] sm:w-[320px] sm:h-[410px] lg:w-[390px] lg:h-[500px] rounded-[50%_50%_50%_45%] overflow-hidden">
+
+                                    <Image
+                                        src="/retrato.png"
+                                        alt={t("portraitAlt")}
+                                        fill
+                                        priority
+                                        className="object-cover grayscale"
+                                        sizes="(max-width: 768px) 320px, 390px"
+                                    />
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        {/* COLUNA DIREITA — MÉTRICAS */}
+                        <div className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 w-[23%] flex-col gap-12 text-right dynamic-reveal-delayed-more">
+
+                            <div>
+                                <div className="font-custom text-4xl lg:text-5xl text-[var(--color-secondary)]">
+                                    +3
+                                </div>
+
+                                <div className="mt-2 text-[9px] font-bold tracking-[0.22em] uppercase text-[var(--color-primary)]/60">
+                                    {t("metricYearsLabel")}
+                                </div>
+                            </div>
+
+                            <div>
+                                <div className="font-custom text-4xl lg:text-5xl text-[var(--color-secondary)]">
+                                    UI
+                                </div>
+
+                                <div className="mt-2 text-[9px] font-bold tracking-[0.22em] uppercase text-[var(--color-primary)]/60">
+                                    {t("metricUILabel")}
+                                </div>
+                            </div>
+
+                            <div>
+                                <div className="font-custom text-4xl lg:text-5xl text-[var(--color-secondary)]">
+                                    CODE
+                                </div>
+
+                                <div className="mt-2 text-[9px] font-bold tracking-[0.22em] uppercase text-[var(--color-primary)]/60">
+                                    {t("metricCodeLabel")}
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        {/* ASSINATURA / INDICADOR INFERIOR */}
+                        <div className="absolute bottom-4 left-0 right-0 flex justify-between items-end border-t border-[var(--color-primary)]/10 pt-5">
+
+                            <span className="text-[9px] tracking-[0.25em] uppercase text-[var(--color-primary)]/40">
+                                {t("location")}
                             </span>
-                        </h1>
-                    </div>
 
-                    <div className="flex flex-wrap gap-8 pt-8 border-t border-[var(--color-quaternary)]/10 w-full dynamic-reveal-delayed-more">
-                        <a
-                            href="/curriculo-debora-meireles.pdf"
-                            download
-                            className="inline-flex items-center gap-2 text-[11px] font-bold tracking-wider uppercase text-[var(--color-primary)] hover:text-[var(--color-secondary)] transition-colors group"
-                        >
-                            <Download className="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform duration-300" />
-                            {t("downloadCV")}
-                        </a>
+                            <span className="text-[9px] tracking-[0.25em] uppercase text-[var(--color-primary)]/40">
+                                {t("tagline")}
+                            </span>
 
-                        <Link
-                            href={`/${locale}/projects`}
-                            className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-wider uppercase text-[var(--color-secondary)] hover:text-[var(--color-primary)] transition-colors group"
-                        >
-                            {t("viewIndex")}
-                            <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                        </Link>
+                        </div>
+
                     </div>
                 </Container>
 
                 <style>{`
-                    @keyframes revealUp {
-                        from { transform: translateY(25px); opacity: 0; }
-                        to   { transform: translateY(0); opacity: 1; }
-                    }
-                    @keyframes devTyping {
-                        0%, 100% { content: ""; }
-                        5%, 20%  { content: "dev"; }
-                        25%, 40% { content: "code"; }
-                        45%, 60% { content: "ui"; }
-                        65%, 80% { content: "exec"; }
-                        85%, 95% { content: "deploy"; }
-                    }
-                    @keyframes flapWings {
-                        0%, 100% { transform: scaleX(1); }
-                        50%      { transform: scaleX(0.2); }
-                    }
-                    .butterfly-wings {
-                        animation: flapWings 0.35s infinite ease-in-out;
-                        transform-origin: center center;
-                    }
-                    .dev-typewriter::after {
-                        content: "|";
-                        animation: blink 0.8s infinite;
-                        margin-left: 1px;
-                    }
-                    .dev-typewriter::before {
-                        content: "";
-                        animation: devTyping 12s infinite;
-                    }
-                    @keyframes blink {
-                        0%, 100% { opacity: 1; }
-                        50% { opacity: 0; }
-                    }
-                    .dynamic-reveal { animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
-                    .dynamic-reveal-delayed { animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both; }
-                    .dynamic-reveal-delayed-more { animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both; }
-                `}</style>
-            </section>
+        @keyframes revealUp {
+            from {
+                transform: translateY(25px);
+                opacity: 0;
+            }
 
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes flapWings {
+            0%, 100% {
+                transform: scaleX(1);
+            }
+
+            50% {
+                transform: scaleX(0.2);
+            }
+        }
+
+        .butterfly-wings {
+            animation: flapWings 0.35s infinite ease-in-out;
+            transform-origin: center center;
+        }
+
+        .dynamic-reveal {
+            animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .dynamic-reveal-delayed {
+            animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+        }
+
+        .dynamic-reveal-delayed-more {
+            animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+        }
+    `}
+                </style>
+
+            </section>
             {/* ── Seção A Jornada ────────────────────────────────────────────────── */}
             <section className="w-full bg-[var(--color-primary)] pt-24 pb-12 border-t border-[var(--color-quaternary)]/10 relative z-10">
                 <div className="max-w-7xl mx-auto px-6 md:px-16">
@@ -257,13 +379,13 @@ export default function Hero() {
                             </h2>
                         </div>
                         <div>
-                            <h3 className="font-custom font-normal text-3xl md:text-4xl text-[var(--color-primary)] italic">
+                            <h3 className="font-custom font-normal text-3xl md:text-4xl text-[var(--color-primary)]">
                                 {t("practiceTitle")}
                             </h3>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-6">
                         {studyProjects.map((project) => (
                             <a
                                 key={project.id}
@@ -293,7 +415,7 @@ export default function Hero() {
                                         ))}
                                     </div>
                                     <div className="flex items-center justify-between gap-4">
-                                        <h4 className="font-serif text-xl md:text-2xl font-light text-[var(--background)] tracking-tight">
+                                        <h4 className="font-custom text-xl md:text-2xl font-light text-[var(--background)] tracking-tight">
                                             {t(project.titleKey)}
                                         </h4>
                                         <ArrowUpRight size={20} className="text-[var(--color-tertiary)] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500" />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { X, ExternalLink, GitBranch, ArrowUpRight } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -9,7 +9,7 @@ import { useTranslations } from "next-intl";
 
 type FrontendProject = {
     id: string;
-    title: string;
+    titleKey: string;
     subtitleKey: string;
     descriptionKey: string;
     image: string;
@@ -39,6 +39,22 @@ function ProjectModal({
 }) {
     const t = useTranslations("projects");
 
+    // Fecha com Esc e trava o scroll do body enquanto o modal está aberto
+    useEffect(() => {
+        const onKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape") onClose();
+        };
+        document.addEventListener("keydown", onKeyDown);
+
+        const originalOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+
+        return () => {
+            document.removeEventListener("keydown", onKeyDown);
+            document.body.style.overflow = originalOverflow;
+        };
+    }, [onClose]);
+
     return (
         <div
             className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-[var(--color-primary)]/60 backdrop-blur-md"
@@ -50,8 +66,9 @@ function ProjectModal({
             >
                 <button
                     onClick={onClose}
+                    autoFocus
                     className="absolute top-4 right-4 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-[var(--background)]/80 text-[var(--color-primary)] hover:text-[var(--color-secondary)] border border-[var(--color-quaternary)]/10 transition-all cursor-pointer"
-                    aria-label="Close modal"
+                    aria-label={t("closeModal")}
                 >
                     <X size={18} />
                 </button>
@@ -59,7 +76,7 @@ function ProjectModal({
                 <div className="relative w-full aspect-video bg-[var(--color-quaternary)]/5 flex-shrink-0">
                     <Image
                         src={project.image}
-                        alt={project.title}
+                        alt={t(project.titleKey)}
                         fill
                         className="object-cover"
                     />
@@ -69,7 +86,7 @@ function ProjectModal({
                     <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
                         <div>
                             <h3 className="text-2xl font-semibold tracking-tight text-[var(--color-primary)]">
-                                {project.title}
+                                {t(project.titleKey)}
                             </h3>
                             <p className="text-xs font-bold text-[var(--color-secondary)] uppercase tracking-wider mt-1">
                                 {t(project.subtitleKey)}
@@ -138,7 +155,7 @@ function FrontendCard({
             <div className="relative aspect-[16/10] overflow-hidden bg-[var(--color-quaternary)]/5">
                 <Image
                     src={project.image}
-                    alt={project.title}
+                    alt={t(project.titleKey)}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-[0.16,1,0.3,1]"
                 />
@@ -152,7 +169,7 @@ function FrontendCard({
             <div className="p-6 flex items-start justify-between gap-4">
                 <div>
                     <h3 className="font-sans font-semibold text-lg text-[var(--color-primary)] group-hover:text-[var(--color-secondary)] transition-colors">
-                        {project.title}
+                        {t(project.titleKey)}
                     </h3>
                     <p className="text-[10px] font-bold text-[var(--color-secondary)] uppercase tracking-widest mt-1">
                         {t(project.subtitleKey)}
@@ -243,7 +260,7 @@ export default function Projects() {
     const frontendProjects: FrontendProject[] = [
         {
             id: "toti",
-            title: "Toti",
+            titleKey: "toti.title",
             subtitleKey: "toti.subtitle",
             descriptionKey: "toti.description",
             image: "/projects/toti.png",
@@ -253,7 +270,7 @@ export default function Projects() {
         },
         {
             id: "conversor",
-            title: "Conversor de Moedas",
+            titleKey: "conversor.title",
             subtitleKey: "conversor.subtitle",
             descriptionKey: "conversor.description",
             image: "/projects/conversor.png",
@@ -263,7 +280,7 @@ export default function Projects() {
         },
         {
             id: "verdant",
-            title: "Verdant",
+            titleKey: "verdant.title",
             subtitleKey: "verdant.subtitle",
             descriptionKey: "verdant.description",
             image: "/projects/verdant.png",
@@ -273,7 +290,7 @@ export default function Projects() {
         },
         {
             id: "game",
-            title: "Game Project",
+            titleKey: "game.title",
             subtitleKey: "game.subtitle",
             descriptionKey: "game.description",
             image: "/projects/game.png",
@@ -283,7 +300,7 @@ export default function Projects() {
         },
         {
             id: "starbucks",
-            title: "Starbucks Clone",
+            titleKey: "starbucks.title",
             subtitleKey: "starbucks.subtitle",
             descriptionKey: "starbucks.description",
             image: "/projects/starbucks.png",
