@@ -1,11 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import Logo from "../assets/logo-principal.png";
 import Container from "./Container";
 
 export default function Header() {
@@ -50,27 +48,23 @@ export default function Header() {
     return (
         <header
             className={`fixed top-0 left-0 w-full z-[60] transition-all duration-500 antialiased ${scrolled
-                    ? "bg-[var(--color-primary)]/90 backdrop-blur-md text-[var(--color-tertiary)] border-b border-[var(--color-tertiary)]/20 shadow-lg py-1"
-                    : "bg-[var(--background)]/70 backdrop-blur-sm text-[var(--color-primary)] border-b border-[var(--color-quaternary)]/10 py-0"
+                ? "bg-[var(--color-primary)]/90 backdrop-blur-md text-[var(--color-tertiary)] border-b border-[var(--color-tertiary)]/20 shadow-lg py-1"
+                : "bg-[var(--background)]/70 backdrop-blur-sm text-[var(--color-primary)] border-b border-[var(--color-quaternary)]/10 py-0"
                 }`}
         >
             <Container className="max-w-7xl mx-auto px-6 md:px-16">
                 <div className="flex items-center justify-between h-20">
 
-                    {/* LOGO (Filtro CSS forçado para alterar a cor da imagem PNG no scroll) */}
                     <Link href={`/${locale}`} className="z-[70] transition-transform flex-shrink-0">
-                        <Image
-                            src={Logo}
-                            alt="Logo Débora"
-                            width={160}
-                            height={50}
-                            className="w-32 md:w-36 h-auto transition-all duration-500"
-                            style={{
-                                filter: scrolled ? "brightness(0) invert(1)" : "none",
-                                mixBlendMode: scrolled ? "normal" : "multiply",
-                            }}
-                            priority
-                        />
+                        <span
+                            className={`font-custom text-xl md:text-2xl tracking-tight transition-colors duration-500 ${scrolled ? "text-[var(--color-tertiary)]" : "text-[var(--color-primary)]"
+                                }`}
+                        >
+                            Débora{" "}
+                            <span className={scrolled ? "text-[var(--color-tertiary)]" : "text-[var(--color-secondary)]"}>
+                                Meireles
+                            </span>
+                        </span>
                     </Link>
 
                     {/* DESKTOP NAV */}
@@ -82,8 +76,8 @@ export default function Header() {
                                     key={href}
                                     href={href}
                                     className={`relative transition-colors duration-300 ${isActive
-                                            ? scrolled ? "text-[var(--background)]" : "text-[var(--color-secondary)]"
-                                            : scrolled ? "text-[var(--color-tertiary)]/80 hover:text-[var(--background)]" : "text-[var(--color-primary)] hover:text-[var(--color-secondary)]"
+                                        ? scrolled ? "text-[var(--background)]" : "text-[var(--color-secondary)]"
+                                        : scrolled ? "text-[var(--color-tertiary)]/80 hover:text-[var(--background)]" : "text-[var(--color-primary)] hover:text-[var(--color-secondary)]"
                                         }`}
                                 >
                                     {label}
@@ -99,8 +93,8 @@ export default function Header() {
                         <button
                             onClick={toggleLocale}
                             className={`text-[10px] font-bold tracking-widest transition-all cursor-pointer border rounded-full px-2.5 py-0.5 ${scrolled
-                                    ? "text-[var(--color-tertiary)] border-[var(--color-tertiary)]/30 hover:border-[var(--background)] hover:text-[var(--background)]"
-                                    : "text-[var(--color-quaternary)] opacity-60 hover:opacity-100 hover:text-[var(--color-secondary)] border-[var(--color-quaternary)]/20"
+                                ? "text-[var(--color-tertiary)] border-[var(--color-tertiary)]/30 hover:border-[var(--background)] hover:text-[var(--background)]"
+                                : "text-[var(--color-quaternary)] opacity-60 hover:opacity-100 hover:text-[var(--color-secondary)] border-[var(--color-quaternary)]/20"
                                 }`}
                         >
                             {locale === "pt" ? "EN" : "PT"}
@@ -110,8 +104,8 @@ export default function Header() {
                         <Link
                             href={`/${locale}/contact`}
                             className={`ml-2 px-5 py-2 border rounded-full text-[10px] font-bold tracking-[0.15em] uppercase transition-all duration-300 active:scale-97 ${scrolled
-                                    ? "border-[var(--background)] text-[var(--background)] hover:bg-[var(--background)] hover:text-[var(--color-primary)]"
-                                    : "border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-[var(--background)]"
+                                ? "border-[var(--background)] text-[var(--background)] hover:bg-[var(--background)] hover:text-[var(--color-primary)]"
+                                : "border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-[var(--background)]"
                                 }`}
                         >
                             {t("contact")}
@@ -123,7 +117,7 @@ export default function Header() {
                         className={`md:hidden z-[90] p-2 focus:outline-none transition-colors duration-300 ${scrolled ? "text-[var(--color-tertiary)]" : "text-[var(--color-primary)]"
                             }`}
                         onClick={() => setMenuOpen(!menuOpen)}
-                        aria-label="Toggle Menu"
+                        aria-label={t("toggleMenu")}
                     >
                         <div className="w-6 h-4 relative flex flex-col justify-between">
                             <span className={`w-full h-[1.5px] bg-current transition-all duration-300 origin-left ${menuOpen ? "rotate-45 translate-x-0.5" : ""}`} />

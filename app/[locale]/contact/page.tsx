@@ -36,7 +36,7 @@ export default function Contact() {
 
                         {/* Canal: Email */}
                         <a
-                            href="mailto:deborameireles.dev@gmail.com"
+                            href="mailto:cristinadebory@gmail.com"
                             className="group grid grid-cols-[auto_1fr_auto] items-center py-8 border-b border-[var(--color-quaternary)]/10 transition-colors duration-300 hover:border-[var(--color-secondary)]/30 text-left w-full"
                         >
                             <Mail size={18} className="text-[var(--color-secondary)] mr-6 opacity-60 group-hover:opacity-100 transition-opacity" />
@@ -45,15 +45,15 @@ export default function Contact() {
                                     {t("email")}
                                 </span>
                                 <span className="text-xs font-mono text-[var(--color-quaternary)] opacity-40 group-hover:opacity-80 transition-opacity">
-                                    deborameireles.dev@gmail.com
+                                    cristinadebory@gmail.com
                                 </span>
                             </div>
-                            <ArrowUpRight size={20} className="text-[var(--color-tertiary)] opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-[0.16,1,0.3,1] ml-6" />
+                            <ArrowUpRight size={20} className="text-[var(--color-secondary)] opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-[0.16,1,0.3,1] ml-6" />
                         </a>
 
                         {/* Canal: LinkedIn (Nativo) */}
                         <a
-                            href="https://linkedin.com/in/deborameireles"
+                            href="https://linkedin.com/in/deborameireles-dev"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group grid grid-cols-[auto_1fr_auto] items-center py-8 border-b border-[var(--color-quaternary)]/10 transition-colors duration-300 hover:border-[var(--color-secondary)]/30 text-left w-full"
@@ -69,12 +69,12 @@ export default function Contact() {
                             <span className="font-sans text-lg font-medium text-[var(--color-primary)] group-hover:translate-x-2 transition-transform duration-500 ease-[0.16,1,0.3,1]">
                                 {t("linkedin")}
                             </span>
-                            <ArrowUpRight size={20} className="text-[var(--color-tertiary)] opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-[0.16,1,0.3,1]" />
+                            <ArrowUpRight size={20} className="text-[var(--color-secondary)] opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-[0.16,1,0.3,1]" />
                         </a>
 
-                        {/* Canal: WhatsApp (Nativo) — TODO: troque "seu-numero" pelo número real, formato 55DDDNÚMERO (só dígitos, sem +) */}
+                        {/* Canal: WhatsApp (Nativo) */}
                         <a
-                            href="https://wa.me/seu-numero"
+                            href="https://wa.me/55011949786008"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group grid grid-cols-[auto_1fr_auto] items-center py-8 border-b border-[var(--color-quaternary)]/10 transition-colors duration-300 hover:border-[var(--color-secondary)]/30 text-left w-full"
@@ -88,7 +88,7 @@ export default function Contact() {
                             <span className="font-sans text-lg font-medium text-[var(--color-primary)] group-hover:translate-x-2 transition-transform duration-500 ease-[0.16,1,0.3,1]">
                                 {t("whatsapp")}
                             </span>
-                            <ArrowUpRight size={20} className="text-[var(--color-tertiary)] opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-[0.16,1,0.3,1]" />
+                            <ArrowUpRight size={20} className="text-[var(--color-secondary)] opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-[0.16,1,0.3,1]" />
                         </a>
 
                         {/* Canal: GitHub (Nativo) */}
@@ -108,7 +108,7 @@ export default function Contact() {
                             <span className="font-sans text-lg font-medium text-[var(--color-primary)] group-hover:translate-x-2 transition-transform duration-500 ease-[0.16,1,0.3,1]">
                                 {t("github")}
                             </span>
-                            <ArrowUpRight size={20} className="text-[var(--color-tertiary)] opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-[0.16,1,0.3,1]" />
+                            <ArrowUpRight size={20} className="text-[var(--color-secondary)] opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 ease-[0.16,1,0.3,1]" />
                         </a>
                     </div>
 

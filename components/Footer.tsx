@@ -18,11 +18,11 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="w-full border-t border-slate-100 bg-[var(--primary)]">
+        <footer className="w-full border-t border-[var(--color-quaternary)]/20 bg-[var(--color-primary)]">
             <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
 
                 {/* Copyright */}
-                <p className="text-xs text-[var(--tertiary)] tracking-widest uppercase font-sans">
+                <p className="text-xs text-[var(--color-tertiary)] tracking-widest uppercase font-sans">
                     © {new Date().getFullYear()} Débora Cristina Meireles
                 </p>
 
@@ -35,8 +35,8 @@ export default function Footer() {
                             key={href}
                             href={href}
                             className={`text-xs tracking-widest uppercase transition-colors ${pathname === href
-                                ? "text-[var(--secondary)] font-bold"
-                                : "text-[var(--tertiary)] hover:text-[var(--secondary)]"
+                                ? "text-[var(--background)] font-bold"
+                                : "text-[var(--color-tertiary)]/70 hover:text-[var(--background)]"
                                 }`}
                         >
                             {label}

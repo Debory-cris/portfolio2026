@@ -12,13 +12,42 @@
 }
 
 :root {
-  --primary: #400b55;
-  --secondary: #ce337e;
-  --tertiary: #48f8ef;
-  --quaternary: #5c5c5c;
+  --primary: #18181b;
 
-  --background: #FFFDF7;
-  --foreground: #310641;
+  --tertiary: #FAFAF9;
+
+  --quaternary: #6b6b70;
+
+  --background: #FAFAF9;
+  --foreground: #18181b;
+}
+
+@keyframes revealUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.reveal-up {
+  animation: revealUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.reveal-up-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.reveal-up-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.reveal-up-delay-3 {
+  animation-delay: 0.3s;
 }
 
 body {

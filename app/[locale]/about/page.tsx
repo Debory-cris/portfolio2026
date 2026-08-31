@@ -52,21 +52,17 @@ export default function AboutMe() {
         >
             <div className="max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-16 items-start">
 
-                {/* ── COLUNA DA ESQUERDA: PERFIL EDITORIAL (STICKY) ────────────────── */}
-                <div className="relative md:sticky md:top-12 flex flex-col items-start w-full">
+                {/* ── COLUNA DA ESQUERDA ────────────────── */}
+                <div className="relative md:sticky md:top-12 flex flex-col items-start w-full reveal-up">
 
-                    {/* Imagem de Perfil com Borda de Destaque */}
-                    <div className="absolute -left-12 bottom-8 w-28 h-28 rounded-full bg-fuchsia-300/40 -z-10" />
-
-                    <div className="w-full aspect-[4/5] sm:max-w-[280px] rounded-2xl overflow-hidden mb-8 bg-[var(--color-quaternary)]/10 border border-[var(--color-quaternary)]/20 rounded-[50%_50%_50%_45%] shadow-[0_20px_40px_rgba(0,0,0,0.06)]">
+                    <div className="w-full aspect-[4/5] sm:max-w-[280px] rounded-[2rem] overflow-hidden mb-8 border border-[var(--color-secondary)]/15">
                         <img
                             src="/perfil.png"
                             alt={t("portraitAlt")}
-                            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                            className="w-full h-full object-cover grayscale transition-transform duration-700 hover:scale-105"
                         />
                     </div>
 
-                    {/* Nome em Sans-serif Robusta */}
                     <h2 className="font-sans text-2xl md:text-3xl font-bold tracking-tight text-[var(--color-primary)] mb-1">
                         Débora Cristina Meireles
                     </h2>
@@ -99,8 +95,8 @@ export default function AboutMe() {
                     </div>
                 </div>
 
-                {/* ── COLUNA DA DIREITA: HISTÓRICO COM HIERARQUIA VIBRANTE ────────── */}
-                <div className="space-y-20 w-full">
+                {/* ── COLUNA DA DIREITA ────────── */}
+                <div className="space-y-20 w-full reveal-up reveal-up-delay-1">
 
                     {/* 1. Formação Acadêmica */}
                     <div>
@@ -110,7 +106,7 @@ export default function AboutMe() {
                         </div>
 
                         <div className="flex flex-col gap-5">
-                            {/* Card 1 (Destaque Cursando) */}
+                            {/* Card 1 */}
                             <div className="relative p-6 rounded-2xl border border-[var(--color-secondary)]/40 bg-[var(--color-quaternary)]/10 shadow-sm transition-all hover:border-[var(--color-secondary)]">
                                 <div className="absolute left-0 top-0 w-1.5 h-full bg-[var(--color-secondary)] rounded-l-2xl" />
                                 <div className="flex justify-between items-start gap-4">

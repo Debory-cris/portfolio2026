@@ -3,7 +3,8 @@
         "home": "Home",
         "about": "About",
         "projects": "Projects",
-        "contact": "Contact"
+        "contact": "Contact",
+        "toggleMenu": "Toggle menu"
     },
     "hero": {
         "titleLine1": "Hi,",
@@ -17,7 +18,7 @@
         "conversorTitle": "Currency Converter App",
         "gameTitle": "HTML5 Interactive Game",
         "roleLabel": "Front-end Developer",
-        "bio": "Art Director transitioning into Front-end, combining visual direction, UI Design, and code to build digital experiences.",
+        "bio": "Turning art direction and UI design into shipped interfaces — built with React and Next.js, with the same rigor I've always brought to brand and visual systems.",
         "portraitAlt": "Portrait of Débora Meireles",
         "metricYearsLabel": "years creating",
         "metricUILabel": "design & visual direction",
@@ -31,8 +32,8 @@
         "p2": "I develop high-performance interfaces with React and Next.js, combining technical programming rigor with the sensitivity of someone who understands the importance of every pixel, spacing, and typography."
     },
     "about": {
-        "tagline": "Translating aesthetic concepts into high-performance code.",
-        "roleLabel": "Frontend Developer",
+        "tagline": "Art direction and front-end, in one person: visual consistency, performance, and clean code from brief to deploy.",
+        "roleLabel": "Front-end Developer",
         "portraitAlt": "Portrait of Débora Meireles",
         "english": "English",
         "englishLevel": "Intermediate",

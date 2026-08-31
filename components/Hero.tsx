@@ -68,8 +68,6 @@ export default function Hero() {
             isInside = true;
             butterfly.style.opacity = "0.75";
             butterfly.style.transform = "translate(-50%, -50%) scale(1)";
-            // Cursor nativo só some depois que a borboleta assume — nunca
-            // ficamos sem cursor visível caso o JS demore a montar.
             hero.style.cursor = "none";
         };
 
@@ -116,7 +114,6 @@ export default function Hero() {
                 ref={heroRef}
                 className="relative w-full min-h-screen flex items-center overflow-hidden bg-[var(--background)]"
             >
-                {/* Borboleta que acompanha o mouse — decorativa, fora da árvore de acessibilidade */}
                 <div
                     ref={butterflyRef}
                     aria-hidden="true"
@@ -155,16 +152,10 @@ export default function Hero() {
                         </span>
                     </div>
 
-                    {/* COMPOSIÇÃO PRINCIPAL */}
-                    <div className="relative min-h-[700px] flex items-center">
-
-                        {/* Elementos decorativos */}
-                        <div className="absolute left-[31%] top-[27%] w-24 h-24 md:w-32 md:h-32 rounded-full bg-[var(--color-secondary)]/20 blur-[1px]" />
-
-                        <div className="absolute left-[47%] top-[22%] w-28 h-28 md:w-36 md:h-36 rounded-full bg-[#8FD3FF]/50" />
+                    <div className="grid grid-cols-1 md:grid-cols-[minmax(0,38%)_minmax(240px,1fr)_minmax(160px,23%)] md:items-center gap-12 md:gap-8 lg:gap-12 py-16 md:py-24">
 
                         {/* COLUNA ESQUERDA */}
-                        <div className="relative z-20 w-full md:w-[38%] pt-20 md:pt-0">
+                        <div className="relative z-20 w-full pt-8 md:pt-0">
 
                             <div className="overflow-hidden mb-8">
                                 <span className="inline-flex items-center gap-3 text-[10px] font-bold tracking-[0.3em] uppercase text-[var(--color-primary)] dynamic-reveal">
@@ -174,11 +165,11 @@ export default function Hero() {
                             </div>
 
                             <div className="dynamic-reveal-delayed">
-                                <h1 className="font-custom font-normal text-6xl sm:text-7xl lg:text-[86px] leading-[0.88] tracking-[-0.04em] text-[var(--color-primary)]">
+                                <h1 className="font-custom font-normal text-[clamp(2.75rem,6vw,5.375rem)] leading-[0.92] tracking-[-0.03em] text-[var(--color-primary)]">
                                     {t("titleLine1")} {t("titleLine2")}
                                 </h1>
 
-                                <h2 className="font-custom italic font-light text-6xl sm:text-7xl lg:text-[86px] leading-[0.9] tracking-[-0.04em] text-[var(--color-secondary)]">
+                                <h2 className="font-custom font-normal text-[clamp(2.75rem,6vw,5.375rem)] leading-[0.95] tracking-[-0.03em] text-[var(--color-secondary)]">
                                     {t("titleHighlight")}
                                 </h2>
                             </div>
@@ -214,36 +205,25 @@ export default function Hero() {
                         </div>
 
 
-                        {/* FOTO CENTRAL */}
-                        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[46%] z-10">
+                        <div className="relative justify-self-center z-10">
 
-                            <div className="relative">
+                            <div className="relative w-[280px] h-[360px] sm:w-[320px] sm:h-[410px] lg:w-[360px] lg:h-[460px] rounded-[2rem] overflow-hidden border border-[var(--color-secondary)]/15">
 
-                                {/* círculos decorativos */}
-                                <div className="absolute -left-12 bottom-8 w-28 h-28 rounded-full bg-fuchsia-300/40 -z-10" />
-
-                                <div className="absolute -right-8 top-8 w-32 h-32 rounded-full bg-sky-300/50 -z-10" />
-
-                                {/* foto */}
-                                <div className="relative w-[280px] h-[360px] sm:w-[320px] sm:h-[410px] lg:w-[390px] lg:h-[500px] rounded-[50%_50%_50%_45%] overflow-hidden">
-
-                                    <Image
-                                        src="/retrato.png"
-                                        alt={t("portraitAlt")}
-                                        fill
-                                        priority
-                                        className="object-cover grayscale"
-                                        sizes="(max-width: 768px) 320px, 390px"
-                                    />
-
-                                </div>
+                                <Image
+                                    src="/retrato.png"
+                                    alt={t("portraitAlt")}
+                                    fill
+                                    priority
+                                    className="object-cover grayscale"
+                                    sizes="(max-width: 768px) 320px, 360px"
+                                />
 
                             </div>
                         </div>
 
 
                         {/* COLUNA DIREITA — MÉTRICAS */}
-                        <div className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 w-[23%] flex-col gap-12 text-right dynamic-reveal-delayed-more">
+                        <div className="hidden md:flex flex-col gap-12 text-right dynamic-reveal-delayed-more">
 
                             <div>
                                 <div className="font-custom text-4xl lg:text-5xl text-[var(--color-secondary)]">
@@ -277,21 +257,20 @@ export default function Hero() {
 
                         </div>
 
+                    </div>
 
-                        {/* ASSINATURA / INDICADOR INFERIOR */}
-                        <div className="absolute bottom-4 left-0 right-0 flex justify-between items-end border-t border-[var(--color-primary)]/10 pt-5">
+                    <div className="relative flex justify-between items-end border-t border-[var(--color-primary)]/10 pt-5 pb-8 md:pb-0">
 
-                            <span className="text-[9px] tracking-[0.25em] uppercase text-[var(--color-primary)]/40">
-                                {t("location")}
-                            </span>
+                        <span className="text-[9px] tracking-[0.25em] uppercase text-[var(--color-primary)]/40">
+                            {t("location")}
+                        </span>
 
-                            <span className="text-[9px] tracking-[0.25em] uppercase text-[var(--color-primary)]/40">
-                                {t("tagline")}
-                            </span>
-
-                        </div>
+                        <span className="text-[9px] tracking-[0.25em] uppercase text-[var(--color-primary)]/40">
+                            {t("tagline")}
+                        </span>
 
                     </div>
+
                 </Container>
 
                 <style>{`
@@ -341,13 +320,13 @@ export default function Hero() {
             <section className="w-full bg-[var(--color-primary)] pt-24 pb-12 border-t border-[var(--color-quaternary)]/10 relative z-10">
                 <div className="max-w-7xl mx-auto px-6 md:px-16">
 
-                    <div className="border-b border-[var(--color-tertiary)]/10 pb-6 mb-12">
-                        <h2 className="text-[10px] font-bold tracking-[0.25em] uppercase text-[var(--color-tertiary)]">
+                    <div className="border-b border-[var(--color-quaternary)]/10 pb-6 mb-12">
+                        <h2 className="text-[10px] font-bold tracking-[0.25em] uppercase text-[var(--color-quaternary)]">
                             // {tJourney("title")}
                         </h2>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-1 items-start">
+                    <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_2fr] gap-1 items-start">
                         <div className="w-full aspect-[4/4] sm:max-w-[280px] rounded-2xl overflow-hidden bg-[var(--color-quaternary)]/5 border border-[var(--color-tertiary)]/10 shadow-[0_20px_40px_rgba(0,0,0,0.15)] mx-auto md:mx-0">
                             <img
                                 src="/perfil2.png"
@@ -357,10 +336,10 @@ export default function Hero() {
                         </div>
 
                         <div className="max-w-3xl pt-1 md:pt-0">
-                            <p className="text-xl font-light text-[var(--color-tertiary)] leading-relaxed tracking-tight">
+                            <p className="text-xl font-light text-gray-100 leading-relaxed tracking-tight">
                                 {tJourney("p1")}
                             </p>
-                            <p className="text-xl font-light text-[var(--color-tertiary)] opacity-90 leading-relaxed tracking-tight mt-6">
+                            <p className="text-xl font-light text-gray-100 opacity-90 leading-relaxed tracking-tight mt-6">
                                 {tJourney("p2")}
                             </p>
                         </div>

@@ -177,7 +177,7 @@ function FrontendCard({
                 </div>
                 <ArrowUpRight
                     size={18}
-                    className="text-[var(--color-tertiary)] opacity-30 group-hover:opacity-100 group-hover:text-[var(--color-secondary)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0 mt-1"
+                    className="text-[var(--color-quaternary)] opacity-40 group-hover:opacity-100 group-hover:text-[var(--color-secondary)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0 mt-1"
                 />
             </div>
         </button>
@@ -335,7 +335,7 @@ export default function Projects() {
 
             {/* 01 // Frontend Projects */}
             <div className="max-w-7xl mx-auto px-6 md:px-16 mb-28">
-                <div className="flex items-baseline gap-4 border-b border-[var(--color-quaternary)]/10 pb-4 mb-12">
+                <div className="flex items-baseline gap-4 border-b border-[var(--color-quaternary)]/10 pb-4 mb-12 reveal-up">
                     <span className="font-mono text-xs text-[var(--color-secondary)]">01 //</span>
                     <h2 className="font-custom text-3xl md:text-4xl font-normal italic text-[var(--color-primary)]">
                         {t("frontendTitle")}
@@ -355,7 +355,7 @@ export default function Projects() {
 
             {/* 02 // Art Direction Section */}
             <div className="max-w-7xl mx-auto px-6 md:px-16 mb-28">
-                <div className="flex items-baseline gap-4 border-b border-[var(--color-quaternary)]/10 pb-4 mb-12">
+                <div className="flex items-baseline gap-4 border-b border-[var(--color-quaternary)]/10 pb-4 mb-12 reveal-up">
                     <span className="font-mono text-xs text-[var(--color-secondary)]">02 //</span>
                     <h2 className="font-custom text-3xl md:text-4xl font-normal italic text-[var(--color-primary)]">
                         {t("artDirectionTitle")}

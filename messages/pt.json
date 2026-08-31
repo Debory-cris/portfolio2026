@@ -3,11 +3,12 @@
         "home": "Início",
         "about": "Sobre",
         "projects": "Projetos",
-        "contact": "Contato"
+        "contact": "Contato",
+        "toggleMenu": "Abrir menu"
     },
     "hero": {
-        "titleLine1": "Hey, ",
-        "titleLine2": "eu sou a",
+        "titleLine1": "Olá, ",
+        "titleLine2": "eu sou ",
         "titleHighlight": "Débora",
         "downloadCV": "Baixar CV",
         "viewIndex": "Ver index de projetos",
@@ -17,7 +18,7 @@
         "conversorTitle": "Conversor de Moedas",
         "gameTitle": "Jogo Interativo HTML5",
         "roleLabel": "Front-end Developer",
-        "bio": "Art Director em transição para Front-end, unindo direção visual, UI Design e código para criar experiências digitais.",
+        "bio": "Transformo direção de arte e UI Design em interfaces reais — código com React e Next.js, com o mesmo rigor que sempre tive com marca e visual.",
         "portraitAlt": "Retrato de Débora Meireles",
         "metricYearsLabel": "anos criando",
         "metricUILabel": "design & direção visual",
@@ -31,8 +32,8 @@
         "p2": "Desenvolvo interfaces de alta performance com React e Next.js, unindo o rigor técnico da programação à sensibilidade de quem entende a importância de cada pixel, espaçamento e tipografia."
     },
     "about": {
-        "tagline": "Transformando conceitos estéticos em código de alta performance.",
-        "roleLabel": "Frontend Developer",
+        "tagline": "Direção de arte e front-end, na mesma pessoa: consistência visual, performance e código limpo do briefing ao deploy.",
+        "roleLabel": "Front-end Developer",
         "portraitAlt": "Retrato de Débora Meireles",
         "english": "Inglês",
         "englishLevel": "Intermediário",
