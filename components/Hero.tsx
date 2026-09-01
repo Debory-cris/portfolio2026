@@ -358,7 +358,7 @@ export default function Hero() {
                             </h2>
                         </div>
                         <div>
-                            <h3 className="font-custom font-normal text-3xl md:text-4xl text-[var(--color-primary)]">
+                            <h3 className="font-custom font-normal text-3xl md:text-4xl text-[var(--color-secondary)] tracking-tight">
                                 {t("practiceTitle")}
                             </h3>
                         </div>

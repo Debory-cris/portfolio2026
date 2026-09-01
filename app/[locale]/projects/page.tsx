@@ -85,7 +85,7 @@ function ProjectModal({
                 <div className="p-6 md:p-8 overflow-y-auto">
                     <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
                         <div>
-                            <h3 className="text-2xl font-semibold tracking-tight text-[var(--color-primary)]">
+                            <h3 className="text-2xl font-semibold tracking-tight text-[var(--color-s)]">
                                 {t(project.titleKey)}
                             </h3>
                             <p className="text-xs font-bold text-[var(--color-secondary)] uppercase tracking-wider mt-1">
@@ -337,7 +337,7 @@ export default function Projects() {
             <div className="max-w-7xl mx-auto px-6 md:px-16 mb-28">
                 <div className="flex items-baseline gap-4 border-b border-[var(--color-quaternary)]/10 pb-4 mb-12 reveal-up">
                     <span className="font-mono text-xs text-[var(--color-secondary)]">01 //</span>
-                    <h2 className="font-custom text-3xl md:text-4xl font-normal italic text-[var(--color-primary)]">
+                    <h2 className="font-custom text-3xl md:text-4xl font-normal text-[var(--color-secondary)]">
                         {t("frontendTitle")}
                     </h2>
                 </div>
@@ -357,7 +357,7 @@ export default function Projects() {
             <div className="max-w-7xl mx-auto px-6 md:px-16 mb-28">
                 <div className="flex items-baseline gap-4 border-b border-[var(--color-quaternary)]/10 pb-4 mb-12 reveal-up">
                     <span className="font-mono text-xs text-[var(--color-secondary)]">02 //</span>
-                    <h2 className="font-custom text-3xl md:text-4xl font-normal italic text-[var(--color-primary)]">
+                    <h2 className="font-custom text-3xl md:text-4xl font-normal text-[var(--color-secondary)]">
                         {t("artDirectionTitle")}
                     </h2>
                 </div>

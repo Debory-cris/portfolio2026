@@ -12,13 +12,16 @@
 }
 
 :root {
+
   --primary: #18181b;
+
+  --secondary: #6d0a5c;
 
   --tertiary: #FAFAF9;
 
   --quaternary: #6b6b70;
 
-  --background: #FAFAF9;
+  --background: #faf9fa;
   --foreground: #18181b;
 }
 

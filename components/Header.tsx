@@ -105,7 +105,7 @@ export default function Header() {
                             href={`/${locale}/contact`}
                             className={`ml-2 px-5 py-2 border rounded-full text-[10px] font-bold tracking-[0.15em] uppercase transition-all duration-300 active:scale-97 ${scrolled
                                 ? "border-[var(--background)] text-[var(--background)] hover:bg-[var(--background)] hover:text-[var(--color-primary)]"
-                                : "border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-[var(--background)]"
+                                : "border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-secondary)] hover:text-[var(--background)]"
                                 }`}
                         >
                             {t("contact")}

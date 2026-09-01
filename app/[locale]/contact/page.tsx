@@ -23,7 +23,7 @@ export default function Contact() {
                 {/* COLUNA DA DIREITA */}
                 <div className="w-full max-w-4xl">
                     <div className="overflow-hidden mb-6">
-                        <h2 className="font-custom text-5xl sm:text-7xl md:text-8xl font-normal tracking-tight text-[var(--color-primary)] contact-title-reveal">
+                        <h2 className="font-custom text-5xl sm:text-7xl md:text-8xl font-normal tracking-tight text-[var(--color-secondary)] contact-title-reveal">
                             {t("title")}
                         </h2>
                     </div>

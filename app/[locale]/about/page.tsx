@@ -102,7 +102,7 @@ export default function AboutMe() {
                     <div>
                         <div className="flex items-baseline gap-4 border-b border-[var(--color-quaternary)]/20 pb-4 mb-8">
                             <span className="font-mono text-xs font-bold text-[var(--color-secondary)]">01 //</span>
-                            <h3 className="font-normal text-2xl md:text-2xl font-normal text-[var(--color-primary)]">{t("education")}</h3>
+                            <h3 className="font-normal text-2xl md:text-2xl font-normal text-[var(--color-secondary)]">{t("education")}</h3>
                         </div>
 
                         <div className="flex flex-col gap-5">
@@ -141,7 +141,7 @@ export default function AboutMe() {
                     <div>
                         <div className="flex items-baseline gap-4 border-b border-[var(--color-quaternary)]/20 pb-4 mb-8">
                             <span className="font-mono text-xs font-bold text-[var(--color-secondary)]">02 //</span>
-                            <h3 className="font-normal text-2xl md:text-2xl font-normal text-[var(--color-primary)]">{t("experience")}</h3>
+                            <h3 className="font-normal text-2xl md:text-2xl font-normal text-[var(--color-secondary)]">{t("experience")}</h3>
                         </div>
 
                         <div className="relative pl-6 border-l-2 border-[var(--color-secondary)]">
@@ -172,7 +172,7 @@ export default function AboutMe() {
                     <div>
                         <div className="flex items-baseline gap-4 border-b border-[var(--color-quaternary)]/20 pb-4 mb-8">
                             <span className="font-mono text-xs font-bold text-[var(--color-secondary)]">03 //</span>
-                            <h3 className="font-normal text-2xl md:text-2xl font-normal text-[var(--color-primary)]">{t("practiceProjects")}</h3>
+                            <h3 className="font-normal text-2xl md:text-2xl font-normal text-[var(--color-secondary)]">{t("practiceProjects")}</h3>
                         </div>
 
                         <div className="grid grid-cols-1 gap-4">
@@ -201,7 +201,7 @@ export default function AboutMe() {
                     <div>
                         <div className="flex items-baseline gap-4 border-b border-[var(--color-quaternary)]/20 pb-4 mb-8">
                             <span className="font-mono text-xs font-bold text-[var(--color-secondary)]">04 //</span>
-                            <h3 className="font-normal text-2xl md:text-2xl font-normal text-[var(--color-primary)]">{t("stack")}</h3>
+                            <h3 className="font-normal text-2xl md:text-2xl font-normal text-[var(--color-secondary)]">{t("stack")}</h3>
                         </div>
 
                         <div className="flex flex-wrap gap-2.5">
