@@ -275,7 +275,7 @@ export default function Projects() {
             descriptionKey: "conversor.description",
             image: "/projects/conversor.png",
             tags: ["React Native", "Expo", "TypeScript", "API"],
-            liveUrl: "disthttps://conversor-moedas-app.vercel.app/",
+            liveUrl: "https://conversor-moedas-app.vercel.app/",
             githubUrl: "https://github.com/Debory-cris/Conversor_Moedas_APP.git",
         },
         {
