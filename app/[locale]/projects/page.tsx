@@ -275,7 +275,7 @@ export default function Projects() {
             descriptionKey: "conversor.description",
             image: "/projects/conversor.png",
             tags: ["React Native", "Expo", "TypeScript", "API"],
-            liveUrl: "https://appetize.io/embed/b_clf3yzcnyyg5af25nlkyh7d7ty?device=pixel9pro&launchUrl=exp%3A%2F%2Fu.expo.dev%2F933fd9c0-1666-11e7-afca-d980795c5824%3Fruntime-version%3Dexposdk%253A54.0.0%26channel-name%3Dproduction%26snack%3D%2540deboracrism%252Fconversor_app%26snack-channel%3DzY6vHk1TZY&params=%7B%22EXDevMenuDisableAutoLaunch%22%3Atrue%2C%22EXKernelDisableNuxDefaultsKey%22%3Atrue%7D&appearance=light&deviceColor=black&scale=auto&orientation=portrait&centered=both",
+            liveUrl: "disthttps://conversor-moedas-app.vercel.app/",
             githubUrl: "https://github.com/Debory-cris/Conversor_Moedas_APP.git",
         },
         {
